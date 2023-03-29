@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_swiper_view/flutter_swiper_view.dart';
+import 'package:quizzylite/presentation/widgets/quizz_card.dart';
 
-import '../widgets/quizz_card.dart';
+// import '../widgets/quizz_card.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -13,8 +15,17 @@ class HomeView extends StatelessWidget {
         centerTitle: true,
       ),
       body: ListView(
+        padding: const EdgeInsets.all(8.0),
         children: [
-          QuizzCard(),
+          Swiper(
+            itemWidth: MediaQuery.of(context).size.width,
+            itemHeight: MediaQuery.of(context).size.height / 2,
+            itemBuilder: (context, index) {
+              return QuizzCard();
+            },
+            itemCount: 10,
+            layout: SwiperLayout.TINDER,
+          )
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

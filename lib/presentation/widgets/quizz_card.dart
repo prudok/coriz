@@ -7,14 +7,19 @@ class QuizzCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       //TODO: check better variant how to center child element, add functionality and use width and height
-      padding: const EdgeInsets.all(15.0),
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height / 2,
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20.0),
         ),
-        child: userNavigation(),
+        child: const Center(
+          child: Text(
+            'Quiz',
+            style: TextStyle(
+              color: Colors.yellow,
+              fontSize: 35,
+            ),
+          ),
+        ),
       ),
     );
   }

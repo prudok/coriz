@@ -8,7 +8,8 @@ class QuizzLite extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: darkBlueTheme(),
       themeMode: ThemeMode.system,
       home: const HomeView(),

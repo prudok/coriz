@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_view/flutter_swiper_view.dart';
+import 'package:quizzylite/presentation/views/dictionary_view.dart';
 
 import '../widgets/quiz_card.dart';
 import '../widgets/quiz_tile.dart';
+import '../../core/constants/app_colors.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -14,9 +16,14 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   int _selectedIndex = 0;
+  static const _viewsAppBarTitles = <Text>[
+    Text('Quiz'),
+    Text('Dictionary'),
+    Text('Settings'),
+  ];
   static const _viewsOptions = <Widget>[
     HomeListView(),
-    QuizTile(),
+    DictionaryView(),
     QuizTile(), //TODO: add settings view
   ];
 
@@ -30,15 +37,15 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('New Quiz today?'),
+        title: _viewsAppBarTitles.elementAt(_selectedIndex),
         centerTitle: true,
       ),
       body: _viewsOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
+            icon: Icon(Icons.quiz),
+            label: 'Quiz',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.book),
@@ -50,7 +57,7 @@ class _HomeViewState extends State<HomeView> {
           )
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.yellow,
+        selectedItemColor: AppColors.secondary,
         onTap: _onItemTapped,
       ),
     );
@@ -65,7 +72,7 @@ class HomeListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(5.0),
       children: [
         Swiper(
           itemWidth: MediaQuery.of(context).size.width,

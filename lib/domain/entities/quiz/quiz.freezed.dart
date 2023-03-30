@@ -20,6 +20,7 @@ Quiz _$QuizFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Quiz {
+  String get id => throw _privateConstructorUsedError;
   String get word => throw _privateConstructorUsedError;
   String get concept => throw _privateConstructorUsedError;
   bool get isLearned => throw _privateConstructorUsedError;
@@ -35,7 +36,12 @@ abstract class $QuizCopyWith<$Res> {
   factory $QuizCopyWith(Quiz value, $Res Function(Quiz) then) =
       _$QuizCopyWithImpl<$Res, Quiz>;
   @useResult
-  $Res call({String word, String concept, bool isLearned, bool isFavorite});
+  $Res call(
+      {String id,
+      String word,
+      String concept,
+      bool isLearned,
+      bool isFavorite});
 }
 
 /// @nodoc
@@ -51,12 +57,17 @@ class _$QuizCopyWithImpl<$Res, $Val extends Quiz>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? word = null,
     Object? concept = null,
     Object? isLearned = null,
     Object? isFavorite = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       word: null == word
           ? _value.word
           : word // ignore: cast_nullable_to_non_nullable
@@ -83,7 +94,12 @@ abstract class _$$_QuizCopyWith<$Res> implements $QuizCopyWith<$Res> {
       __$$_QuizCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String word, String concept, bool isLearned, bool isFavorite});
+  $Res call(
+      {String id,
+      String word,
+      String concept,
+      bool isLearned,
+      bool isFavorite});
 }
 
 /// @nodoc
@@ -95,12 +111,17 @@ class __$$_QuizCopyWithImpl<$Res> extends _$QuizCopyWithImpl<$Res, _$_Quiz>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? word = null,
     Object? concept = null,
     Object? isLearned = null,
     Object? isFavorite = null,
   }) {
     return _then(_$_Quiz(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       word: null == word
           ? _value.word
           : word // ignore: cast_nullable_to_non_nullable
@@ -125,13 +146,16 @@ class __$$_QuizCopyWithImpl<$Res> extends _$QuizCopyWithImpl<$Res, _$_Quiz>
 @JsonSerializable()
 class _$_Quiz with DiagnosticableTreeMixin implements _Quiz {
   const _$_Quiz(
-      {required this.word,
+      {required this.id,
+      required this.word,
       required this.concept,
       required this.isLearned,
       required this.isFavorite});
 
   factory _$_Quiz.fromJson(Map<String, dynamic> json) => _$$_QuizFromJson(json);
 
+  @override
+  final String id;
   @override
   final String word;
   @override
@@ -143,7 +167,7 @@ class _$_Quiz with DiagnosticableTreeMixin implements _Quiz {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Quiz(word: $word, concept: $concept, isLearned: $isLearned, isFavorite: $isFavorite)';
+    return 'Quiz(id: $id, word: $word, concept: $concept, isLearned: $isLearned, isFavorite: $isFavorite)';
   }
 
   @override
@@ -151,6 +175,7 @@ class _$_Quiz with DiagnosticableTreeMixin implements _Quiz {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'Quiz'))
+      ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('word', word))
       ..add(DiagnosticsProperty('concept', concept))
       ..add(DiagnosticsProperty('isLearned', isLearned))
@@ -162,6 +187,7 @@ class _$_Quiz with DiagnosticableTreeMixin implements _Quiz {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Quiz &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.word, word) || other.word == word) &&
             (identical(other.concept, concept) || other.concept == concept) &&
             (identical(other.isLearned, isLearned) ||
@@ -173,7 +199,7 @@ class _$_Quiz with DiagnosticableTreeMixin implements _Quiz {
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, word, concept, isLearned, isFavorite);
+      Object.hash(runtimeType, id, word, concept, isLearned, isFavorite);
 
   @JsonKey(ignore: true)
   @override
@@ -191,13 +217,16 @@ class _$_Quiz with DiagnosticableTreeMixin implements _Quiz {
 
 abstract class _Quiz implements Quiz {
   const factory _Quiz(
-      {required final String word,
+      {required final String id,
+      required final String word,
       required final String concept,
       required final bool isLearned,
       required final bool isFavorite}) = _$_Quiz;
 
   factory _Quiz.fromJson(Map<String, dynamic> json) = _$_Quiz.fromJson;
 
+  @override
+  String get id;
   @override
   String get word;
   @override

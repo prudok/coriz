@@ -8,6 +8,7 @@ part 'quiz.g.dart';
 @freezed
 class Quiz with _$Quiz {
   const factory Quiz({
+    required String id,
     required String word,
     required String concept,
     required bool isLearned,

@@ -1,18 +1,59 @@
 import 'package:flutter/material.dart';
 
-class QuizTile extends StatelessWidget {
+import '../../core/constants/app_colors.dart';
+import '../../core/constants/app_text_styles.dart';
+
+class QuizTile extends StatefulWidget {
   const QuizTile({Key? key}) : super(key: key);
 
   @override
+  State<QuizTile> createState() => _QuizTileState();
+}
+
+class _QuizTileState extends State<QuizTile> {
+  bool _isFavoriteSelected = false;
+
+  @override
   Widget build(BuildContext context) {
-    return const ListTile(
-      title: Text('Word'),
-      tileColor: Colors.white24,
-      trailing: IconButton(
-        onPressed: null,
-        icon: Icon(Icons.star),
+    return ListTile(
+      title: const Text(
+        'Word',
+        style: AppTextStyles.bodyLarge,
       ),
-      contentPadding: EdgeInsets.all(5.0),
+      subtitle: const Text(
+        'Hello world',
+        style: AppTextStyles.bodyMedium,
+        softWrap: true,
+      ),
+      tileColor: AppColors.lightGrey,
+      trailing: Wrap(
+        children: [
+          const IconButton(
+            onPressed: null,
+            icon: Icon(
+              Icons.edit,
+              size: 30,
+            ),
+          ),
+          IconButton(
+            onPressed: () {
+              setState(() {
+                _isFavoriteSelected = !_isFavoriteSelected;
+              });
+            },
+            icon: Icon(
+              _isFavoriteSelected ? Icons.star : Icons.star_border_outlined,
+              size: 30,
+              color: AppColors.secondary,
+            ),
+          ),
+        ],
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+      contentPadding:
+          const EdgeInsets.symmetric(vertical: 5.0, horizontal: 25.0),
     );
   }
 }

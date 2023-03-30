@@ -9,4 +9,5 @@ final darkBlueColorScheme = ColorScheme.fromSeed(
 
 ThemeData darkBlueTheme() => ThemeData.dark(useMaterial3: true).copyWith(
       colorScheme: darkBlueColorScheme,
+      splashColor: Colors.transparent,
     );

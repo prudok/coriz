@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quizzylite/presentation/widgets/quizzlite.dart';
+import '../widgets/quiz_tile.dart';
 
 class DictionaryView extends StatelessWidget {
   const DictionaryView({Key? key}) : super(key: key);
@@ -8,16 +8,26 @@ class DictionaryView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Your Dictionary'),
-        centerTitle: true,
-      ),
-      body: ListView.builder(
-        itemCount: 10,
-        itemBuilder: (_, __) {
-          return const QuizzLite();
-        },
-      ),
+      body: QuizListView(),
+    );
+  }
+}
+
+class QuizListView extends StatelessWidget {
+  const QuizListView({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: 10,
+      itemBuilder: (context, index) {
+        return Container(
+          margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
+          child: QuizTile(),
+        );
+      },
     );
   }
 }

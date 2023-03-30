@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../core/constants/app_colors.dart';
+
 class EditQuizView extends StatefulWidget {
   const EditQuizView({super.key, this.quizId});
 
@@ -25,20 +27,48 @@ class _EditQuizViewState extends State<EditQuizView> {
         key: _formKey,
         child: Column(
           children: [
-            TextFormField(
-              controller: _wordController,
-              validator: isCorrectInput,
-              decoration: const InputDecoration(
-                hintText: 'Enter edited word',
+            Container(
+              margin:
+                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
+              child: TextFormField(
+                controller: _wordController,
+                validator: isCorrectInput,
+                decoration: const InputDecoration(
+                  hintText: 'Enter edited word',
+                ),
               ),
             ),
-            TextFormField(
-              controller: _conceptController,
-              validator: isCorrectInput,
-              decoration: const InputDecoration(
-                hintText: 'Enter edited concept',
-                suffixIcon: Icon(Icons.transcribe),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.transform,
+                size: 30,
+                color: AppColors.secondary,
               ),
+              style: IconButton.styleFrom(
+                backgroundColor: AppColors.lightGrey,
+                padding: const EdgeInsets.all(15.0),
+              ),
+            ),
+            Container(
+              margin:
+                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
+              child: TextFormField(
+                controller: _conceptController,
+                validator: isCorrectInput,
+                decoration: const InputDecoration(
+                  hintText: 'Enter edited concept',
+                  suffixIcon: Icon(Icons.question_answer),
+                ),
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppColors.lightGrey,
+                foregroundColor: AppColors.secondary,
+              ),
+              child: const Text('Save'),
             ),
           ],
         ),

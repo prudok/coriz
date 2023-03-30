@@ -13,12 +13,12 @@ final GoRouter router = GoRouter(
       builder: (BuildContext context, GoRouterState state) => const HomeView(),
     ),
     GoRoute(
-      path: '/edit',
+      path: EditQuizView.routeName,
       builder: (BuildContext context, GoRouterState state) =>
           const EditQuizView(),
     ),
     GoRoute(
-      path: '/edit:id',
+      path: '${EditQuizView.routeName}:id',
       builder: (BuildContext context, GoRouterState state) =>
           EditQuizView(quizId: state.params['id']),
     ),

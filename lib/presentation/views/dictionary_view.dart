@@ -7,7 +7,7 @@ class DictionaryView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: QuizListView(),
     );
   }
@@ -25,7 +25,7 @@ class QuizListView extends StatelessWidget {
       itemBuilder: (context, index) {
         return Container(
           margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
-          child: QuizTile(),
+          child: const QuizTile(),
         );
       },
     );

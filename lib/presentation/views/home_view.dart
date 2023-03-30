@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_view/flutter_swiper_view.dart';
-import 'package:quizzylite/presentation/views/dictionary_view.dart';
 
+import 'dictionary_view.dart';
+import 'settings_view.dart';
 import '../widgets/quiz_card.dart';
-import '../widgets/quiz_tile.dart';
 import '../../core/constants/app_colors.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
-  static const routeName = '/home';
+  static const routeName = '/';
 
   @override
   State<HomeView> createState() => _HomeViewState();
@@ -24,7 +24,7 @@ class _HomeViewState extends State<HomeView> {
   static const _viewsOptions = <Widget>[
     HomeListView(),
     DictionaryView(),
-    QuizTile(), //TODO: add settings view
+    SettingsView(), //TODO: add settings view
   ];
 
   void _onItemTapped(int index) {

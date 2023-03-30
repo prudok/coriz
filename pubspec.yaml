@@ -41,6 +41,8 @@ dependencies:
   json_annotation: ^4.8.0
   go_router: ^6.5.1
   dartz: ^0.10.1
+  path_provider: ^2.0.14
+  flutter_riverpod: ^2.3.2
 
 dev_dependencies:
   flutter_test:

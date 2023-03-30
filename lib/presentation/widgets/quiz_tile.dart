@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:quizzylite/presentation/views/edit_quiz_view.dart';
 
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_text_styles.dart';
@@ -28,9 +30,12 @@ class _QuizTileState extends State<QuizTile> {
       tileColor: AppColors.lightGrey,
       trailing: Wrap(
         children: [
-          const IconButton(
-            onPressed: null,
-            icon: Icon(
+          IconButton(
+            onPressed: () {
+              //TODO: add functionality
+              context.push(EditQuizView.routeName);
+            },
+            icon: const Icon(
               Icons.edit,
               size: 30,
             ),

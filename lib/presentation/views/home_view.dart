@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:quizzylite/presentation/widgets/quiz_list_view.dart';
 
+import '../../core/constants/app_colors.dart';
+import '../widgets/learned_quizzes_list.dart';
+import '../widgets/quiz_list_view.dart';
 import 'dictionary_view.dart';
 import 'settings_view.dart';
-import '../../core/constants/app_colors.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -22,7 +23,7 @@ class _HomeViewState extends State<HomeView> {
   ];
   static const _viewsOptions = <Widget>[
     QuizCardsView(),
-    DictionaryView(),
+    LearnedQuizzesList(),
     SettingsView(),
   ];
 

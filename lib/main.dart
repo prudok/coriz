@@ -5,4 +5,3 @@ import 'presentation/widgets/quizzlite.dart';
 void main() {
   runApp(const QuizzLite());
 }
-

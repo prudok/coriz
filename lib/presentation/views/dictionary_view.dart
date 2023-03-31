@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../widgets/quiz_tile.dart';
+
+import '../widgets/learned_quizzes_list.dart';
 
 class DictionaryView extends StatelessWidget {
   const DictionaryView({Key? key}) : super(key: key);
@@ -20,14 +21,6 @@ class QuizListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: 10,
-      itemBuilder: (context, index) {
-        return Container(
-          margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
-          child: const QuizTile(),
-        );
-      },
-    );
+    return const LearnedQuizzesList();
   }
 }

@@ -23,7 +23,7 @@ class _HomeViewState extends State<HomeView> {
   ];
   static const _viewsOptions = <Widget>[
     QuizCardsView(),
-    LearnedQuizzesList(),
+    DictionaryView(),
     SettingsView(),
   ];
 

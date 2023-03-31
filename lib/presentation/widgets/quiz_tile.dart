@@ -32,7 +32,6 @@ class _QuizTileState extends State<QuizTile> {
         children: [
           IconButton(
             onPressed: () {
-              //TODO: add functionality
               context.push(EditQuizView.routeName);
             },
             icon: const Icon(

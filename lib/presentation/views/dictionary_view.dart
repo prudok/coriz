@@ -3,7 +3,7 @@ import '../widgets/quiz_tile.dart';
 
 class DictionaryView extends StatelessWidget {
   const DictionaryView({Key? key}) : super(key: key);
-  static const routeName = '/dictionary';
+  static const String widgetName = 'Dictionary';
 
   @override
   Widget build(BuildContext context) {

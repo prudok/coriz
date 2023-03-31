@@ -4,6 +4,7 @@ import '../../core/constants/app_text_styles.dart';
 
 class SettingsView extends StatelessWidget {
   const SettingsView({Key? key}) : super(key: key);
+  static const String widgetName = 'Settings';
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +33,7 @@ class OptionTile extends StatelessWidget {
           const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
       title: Text(title, style: AppTextStyles.bodyLarge),
       trailing: Icon(icon, size: 30),
+      onTap: (){} //TODO: view new page when click,
     );
   }
 }

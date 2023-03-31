@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_swiper_view/flutter_swiper_view.dart';
+import 'package:quizzylite/presentation/widgets/quiz_list_view.dart';
 
 import 'dictionary_view.dart';
 import 'settings_view.dart';
-import '../widgets/quiz_card.dart';
 import '../../core/constants/app_colors.dart';
 
 class HomeView extends StatefulWidget {
@@ -17,14 +16,14 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   int _selectedIndex = 0;
   static const _viewsAppBarTitles = <Text>[
-    Text('Quiz'),
-    Text('Dictionary'),
-    Text('Settings'),
+    Text(QuizCardsView.widgetName),
+    Text(DictionaryView.widgetName),
+    Text(SettingsView.widgetName),
   ];
   static const _viewsOptions = <Widget>[
-    HomeListView(),
+    QuizCardsView(),
     DictionaryView(),
-    SettingsView(), //TODO: add settings view
+    SettingsView(),
   ];
 
   void _onItemTapped(int index) {
@@ -64,26 +63,3 @@ class _HomeViewState extends State<HomeView> {
   }
 }
 
-class HomeListView extends StatelessWidget {
-  const HomeListView({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView(
-      padding: const EdgeInsets.all(5.0),
-      children: [
-        Swiper(
-          itemWidth: MediaQuery.of(context).size.width,
-          itemHeight: MediaQuery.of(context).size.height / 2,
-          itemBuilder: (context, index) {
-            return const QuizCard();
-          },
-          itemCount: 10,
-          layout: SwiperLayout.TINDER,
-        )
-      ],
-    );
-  }
-}

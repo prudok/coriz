@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../core/constants/app_colors.dart';
-import '../widgets/learned_quizzes_list.dart';
-import '../widgets/quiz_list_view.dart';
+import '../widgets/quiz_cards_swiper.dart';
 import 'dictionary_view.dart';
 import 'settings_view.dart';
 
@@ -36,10 +35,10 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: _selectedIndex != 1 ? AppBar(
         title: _viewsAppBarTitles.elementAt(_selectedIndex),
         centerTitle: true,
-      ),
+      ) : null,
       body: _viewsOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         items: const [

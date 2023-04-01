@@ -15,7 +15,7 @@ class QuizTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final model = ref.read(quizListModel);
+    final model = ref.watch(quizListModel);
     return ListTile(
       title: Text(
         quiz.word,

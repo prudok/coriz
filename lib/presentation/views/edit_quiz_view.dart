@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:quizzylite/presentation/viewmodel/module.dart';
 import 'package:shortid/shortid.dart';
 
+import '../viewmodel/module.dart';
 import '../../core/constants/app_colors.dart';
 import '../../domain/entities/quiz/quiz.dart';
 
@@ -61,6 +61,7 @@ class _EditQuizViewState extends ConsumerState<EditQuizView> {
               ),
             ),
             IconButton(
+              //TODO: add API functionality
               onPressed: () {},
               icon: const Icon(
                 Icons.transform,
@@ -94,7 +95,7 @@ class _EditQuizViewState extends ConsumerState<EditQuizView> {
                       id: shortid.generate(),
                       word: _wordController.text,
                       concept: _conceptController.text,
-                      isLearned: true,
+                      isLearned: false,
                       isFavorite: false,
                     );
                     model.save(newQuiz);
@@ -107,14 +108,6 @@ class _EditQuizViewState extends ConsumerState<EditQuizView> {
                         ));
                       }
                     });
-                    // Quiz editedQuiz =
-                    //     model.get(widget.quizId as String) as Quiz;
-                    // model.save(
-                    //   editedQuiz.copyWith(
-                    //     word: _wordController.text,
-                    //     concept: _conceptController.text,
-                    //   ),
-                    // );
                   }
                   if (context.canPop()) {
                     context.pop();

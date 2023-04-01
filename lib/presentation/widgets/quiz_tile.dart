@@ -1,29 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:quizzylite/presentation/viewmodel/module.dart';
 
+import '../../domain/entities/quiz/quiz.dart';
 import '../views/edit_quiz_view.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_text_styles.dart';
 
-class QuizTile extends StatefulWidget {
-  const QuizTile({Key? key}) : super(key: key);
+class QuizTile extends ConsumerWidget {
+  const QuizTile(this.quiz, {super.key});
+
+  final Quiz quiz;
 
   @override
-  State<QuizTile> createState() => _QuizTileState();
-}
-
-class _QuizTileState extends State<QuizTile> {
-  bool _isFavoriteSelected = false;
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final model = ref.read(quizListModel);
     return ListTile(
-      title: const Text(
-        'Word',
+      title: Text(
+        quiz.word,
         style: AppTextStyles.bodyLarge,
       ),
-      subtitle: const Text(
-        'Hello world',
+      subtitle: Text(
+        quiz.concept,
         style: AppTextStyles.bodyMedium,
         softWrap: true,
       ),
@@ -32,7 +31,7 @@ class _QuizTileState extends State<QuizTile> {
         children: [
           IconButton(
             onPressed: () {
-              context.push(EditQuizView.routeName);
+              context.push('${EditQuizView.routeName}${quiz.id}');
             },
             icon: const Icon(
               Icons.edit,
@@ -41,12 +40,10 @@ class _QuizTileState extends State<QuizTile> {
           ),
           IconButton(
             onPressed: () {
-              setState(() {
-                _isFavoriteSelected = !_isFavoriteSelected;
-              });
+              model.save(quiz.copyWith(isFavorite: !quiz.isFavorite));
             },
             icon: Icon(
-              _isFavoriteSelected ? Icons.star : Icons.star_border_outlined,
+              quiz.isFavorite ? Icons.star : Icons.star_border_outlined,
               size: 30,
               color: AppColors.secondary,
             ),

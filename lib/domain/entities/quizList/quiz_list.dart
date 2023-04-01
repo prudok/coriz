@@ -7,9 +7,9 @@ part 'quiz_list.freezed.dart';
 
 part 'quiz_list.g.dart';
 
-@freezed
+@Freezed(makeCollectionsUnmodifiable: false)
 class QuizList with _$QuizList {
-  const factory QuizList({
+  factory QuizList({
     @Default([]) List<Quiz> quizList,
   }) = _QuizList;
 

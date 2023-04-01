@@ -85,7 +85,7 @@ class __$$_QuizListCopyWithImpl<$Res>
   }) {
     return _then(_$_QuizList(
       quizList: null == quizList
-          ? _value._quizList
+          ? _value.quizList
           : quizList // ignore: cast_nullable_to_non_nullable
               as List<Quiz>,
     ));
@@ -95,20 +95,14 @@ class __$$_QuizListCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_QuizList with DiagnosticableTreeMixin implements _QuizList {
-  const _$_QuizList({final List<Quiz> quizList = const []})
-      : _quizList = quizList;
+  const _$_QuizList({this.quizList = const []});
 
   factory _$_QuizList.fromJson(Map<String, dynamic> json) =>
       _$$_QuizListFromJson(json);
 
-  final List<Quiz> _quizList;
   @override
   @JsonKey()
-  List<Quiz> get quizList {
-    if (_quizList is EqualUnmodifiableListView) return _quizList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_quizList);
-  }
+  final List<Quiz> quizList;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -128,13 +122,13 @@ class _$_QuizList with DiagnosticableTreeMixin implements _QuizList {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_QuizList &&
-            const DeepCollectionEquality().equals(other._quizList, _quizList));
+            const DeepCollectionEquality().equals(other.quizList, quizList));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_quizList));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(quizList));
 
   @JsonKey(ignore: true)
   @override

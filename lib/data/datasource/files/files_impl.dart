@@ -18,14 +18,14 @@ class FilesImpl extends Files {
       final contents = await file.readAsString();
       return (contents);
     } catch (error) {
-      return ('Could not get data...');
+      return null;
     }
   }
 
   @override
   Future<File> write(String content) async {
     final file = await _localFile;
-    return file.writeAsString(content);
+    return await file.writeAsString(content);
   }
 
   Future<String> get _localPath async {

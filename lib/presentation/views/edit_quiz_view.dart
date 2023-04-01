@@ -1,27 +1,49 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:quizzylite/presentation/viewmodel/module.dart';
+import 'package:shortid/shortid.dart';
 
 import '../../core/constants/app_colors.dart';
+import '../../domain/entities/quiz/quiz.dart';
 
-class EditQuizView extends StatefulWidget {
+class EditQuizView extends ConsumerStatefulWidget {
   const EditQuizView({super.key, this.quizId});
 
   static const routeName = '/edit';
   final String? quizId;
 
   @override
-  State<EditQuizView> createState() => _EditQuizViewState();
+  ConsumerState<EditQuizView> createState() => _EditQuizViewState();
 }
 
-class _EditQuizViewState extends State<EditQuizView> {
+class _EditQuizViewState extends ConsumerState<EditQuizView> {
   final TextEditingController _wordController = TextEditingController();
   final TextEditingController _conceptController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+  late final model = ref.read(quizListModel);
+
+  @override
+  void initState() {
+    super.initState();
+
+    if (widget.quizId != null) {
+      model.get(widget.quizId!).then((qz) {
+        if (qz != null) {
+          _wordController.text = qz.word;
+          _conceptController.text = qz.concept;
+        }
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    final isNewQuiz = widget.quizId == null;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Edit Quiz'),
+        title: Text(isNewQuiz ? 'New Quiz!' : 'Edit Quiz'),
       ),
       body: Form(
         key: _formKey,
@@ -33,8 +55,8 @@ class _EditQuizViewState extends State<EditQuizView> {
               child: TextFormField(
                 controller: _wordController,
                 validator: isCorrectInput,
-                decoration: const InputDecoration(
-                  hintText: 'Enter edited word',
+                decoration: InputDecoration(
+                  hintText: isNewQuiz ? 'Enter new word' : 'Enter edited word',
                 ),
               ),
             ),
@@ -56,14 +78,49 @@ class _EditQuizViewState extends State<EditQuizView> {
               child: TextFormField(
                 controller: _conceptController,
                 validator: isCorrectInput,
-                decoration: const InputDecoration(
-                  hintText: 'Enter edited concept',
-                  suffixIcon: Icon(Icons.question_answer),
+                decoration: InputDecoration(
+                  hintText:
+                      isNewQuiz ? 'Enter new concept' : 'Enter edited concept',
+                  suffixIcon: const Icon(Icons.question_answer),
                 ),
               ),
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  _formKey.currentState!.save();
+                  if (isNewQuiz) {
+                    Quiz newQuiz = Quiz(
+                      id: shortid.generate(),
+                      word: _wordController.text,
+                      concept: _conceptController.text,
+                      isLearned: true,
+                      isFavorite: false,
+                    );
+                    model.save(newQuiz);
+                  } else {
+                    model.get(widget.quizId!).then((qz) {
+                      if (qz != null) {
+                        model.save(qz.copyWith(
+                          word: _wordController.text,
+                          concept: _conceptController.text,
+                        ));
+                      }
+                    });
+                    // Quiz editedQuiz =
+                    //     model.get(widget.quizId as String) as Quiz;
+                    // model.save(
+                    //   editedQuiz.copyWith(
+                    //     word: _wordController.text,
+                    //     concept: _conceptController.text,
+                    //   ),
+                    // );
+                  }
+                  if (context.canPop()) {
+                    context.pop();
+                  }
+                }
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.lightGrey,
                 foregroundColor: AppColors.secondary,
@@ -77,7 +134,7 @@ class _EditQuizViewState extends State<EditQuizView> {
   }
 
   String? isCorrectInput(String? value) {
-    if (value == null) {
+    if (value == null || value.isEmpty) {
       return 'Please, fill the form.';
     } else {
       return null;

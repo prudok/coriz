@@ -10,7 +10,7 @@ class QuizRepositoryImpl extends QuizRepository {
   QuizRepositoryImpl(this.files);
 
   final Files files;
-  final String quizDataPath = 'Quiz.json';
+  final String quizDataPath = 'quizzes.json';
 
   @override
   Future<void> deleteAllQuiz() async {
@@ -35,7 +35,7 @@ class QuizRepositoryImpl extends QuizRepository {
   Future<QuizList> loadAllQuizzes() async {
     final content = await files.read(quizDataPath);
     if (content == null) {
-      return const QuizList(quizList: []);
+      return QuizList(quizList: []);
     }
     return QuizList.fromJson(jsonDecode(content));
   }

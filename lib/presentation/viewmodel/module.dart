@@ -5,7 +5,7 @@ import '../../domain/module.dart';
 import '../../domain/entities/quiz/quiz.dart';
 
 class QuizzesStateNotifier extends StateNotifier<QuizList> {
-  QuizzesStateNotifier(this.ref) : super(const QuizList(quizList: [])) {
+  QuizzesStateNotifier(this.ref) : super(QuizList(quizList: [])) {
     loadQuizzes();
   }
 
@@ -18,7 +18,7 @@ class QuizzesStateNotifier extends StateNotifier<QuizList> {
 
   Future<void> save(Quiz quiz) async {
     await ref.read(saveQuizProvider).execute(quiz);
-    await loadQuizzes();
+    loadQuizzes();
   }
 
   Future<Quiz?> get(String id) async {

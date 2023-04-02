@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../core/constants/asset_paths.dart';
+import '../gif_widget.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_text_styles.dart';
 import '../quiz_tile.dart';
@@ -14,15 +16,14 @@ class FavoritedQuizzesList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    const String noQuizTitle = 'No Quizzes Added';
     final quizzesListState = ref.watch(quizListState);
     List<Quiz> quizzesList = quizzesListState.quizList
         .where((quiz) => quiz.isFavorite == true)
         .toList();
 
     return quizzesList.isEmpty
-        ? Center(
-            child: Text('No Quizzes found.'),
-          )
+        ? const GifWidget(gifPath: AssetPaths.chillRelaxPath, title: noQuizTitle)
         : Column(
             mainAxisSize: MainAxisSize.max,
             children: [
@@ -35,7 +36,7 @@ class FavoritedQuizzesList extends ConsumerWidget {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 20.0, vertical: 10.0),
                         child: Text(
-                          'Favorited',
+                          'Favorites',
                           style: AppTextStyles.titleMedium.copyWith(
                             color: AppColors.secondary,
                             fontWeight: FontWeight.bold,

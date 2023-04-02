@@ -10,5 +10,6 @@ final darkBlueColorScheme = ColorScheme.fromSeed(
 ThemeData darkBlueTheme() => ThemeData.dark(useMaterial3: true).copyWith(
       colorScheme: darkBlueColorScheme,
       splashColor: Colors.transparent,
-      appBarTheme: AppBarTheme().copyWith(surfaceTintColor: Colors.transparent),
+      appBarTheme:
+          const AppBarTheme().copyWith(surfaceTintColor: Colors.transparent),
     );

@@ -26,13 +26,13 @@ class DictionaryView extends ConsumerWidget {
             unselectedLabelColor: Colors.grey,
             labelColor: AppColors.secondary,
             tabs: [
-              Text('Favorite'),
+              Text('Favorites'),
               Text('New'),
               Text('Learned'),
             ],
           ),
         ),
-        body: TabBarView(
+        body: const TabBarView(
           children: [
             FavoritedQuizzesList(),
             NewQuizzesList(),

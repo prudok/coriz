@@ -21,7 +21,8 @@ class NewQuizzesList extends ConsumerWidget {
         .toList();
 
     return quizzesList.isEmpty
-        ? const GifWidget(gifPath: AssetPaths.sleepingWithPillowPath, title: noQuizTitle)
+        ? const NoDataNotify(
+            gifPath: AssetPaths.sleepingWithPillowPath, title: noQuizTitle)
         : Column(
             mainAxisSize: MainAxisSize.max,
             children: [
@@ -42,13 +43,7 @@ class NewQuizzesList extends ConsumerWidget {
                         ),
                       );
                     }
-                    return Container(
-                      margin: const EdgeInsets.symmetric(
-                        horizontal: 10.0,
-                        vertical: 5.0,
-                      ),
-                      child: QuizTile(quizzesList[index - 1]),
-                    );
+                    return QuizTile(quizzesList[index - 1]);
                   },
                 ),
               ),

@@ -16,36 +16,42 @@ class QuizTile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final model = ref.watch(quizListModel);
-    return GestureDetector(
-      onLongPress: () {
-        context.push('${EditQuizView.routeName}${quiz.id}');
-      },
-      child: ListTile(
-        title: Text(
-          quiz.word,
-          style: AppTextStyles.bodyLarge,
-        ),
-        subtitle: Text(
-          quiz.concept,
-          style: AppTextStyles.bodyMedium,
-          softWrap: true,
-        ),
-        tileColor: AppColors.lightGrey,
-        trailing: IconButton(
-          onPressed: () {
-            model.save(quiz.copyWith(isFavorite: !quiz.isFavorite));
-          },
-          icon: Icon(
-            quiz.isFavorite ? Icons.star : Icons.star_border_outlined,
-            size: 30,
-            color: AppColors.secondary,
+    return Container(
+      margin: const EdgeInsets.symmetric(
+        horizontal: 10.0,
+        vertical: 5.0,
+      ),
+      child: GestureDetector(
+        onLongPress: () {
+          context.push('${EditQuizView.routeName}${quiz.id}');
+        },
+        child: ListTile(
+          title: Text(
+            quiz.word,
+            style: AppTextStyles.bodyLarge,
           ),
+          subtitle: Text(
+            quiz.concept,
+            style: AppTextStyles.bodyMedium,
+            softWrap: true,
+          ),
+          tileColor: AppColors.lightGrey,
+          trailing: IconButton(
+            onPressed: () {
+              model.save(quiz.copyWith(isFavorite: !quiz.isFavorite));
+            },
+            icon: Icon(
+              quiz.isFavorite ? Icons.star : Icons.star_border_outlined,
+              size: 30,
+              color: AppColors.secondary,
+            ),
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          contentPadding:
+              const EdgeInsets.symmetric(vertical: 5.0, horizontal: 25.0),
         ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
-        contentPadding:
-            const EdgeInsets.symmetric(vertical: 5.0, horizontal: 25.0),
       ),
     );
   }

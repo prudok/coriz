@@ -20,7 +20,8 @@ class LearnedQuizzesList extends ConsumerWidget {
     List<Quiz> quizzesList = quizzesListState.quizList;
 
     return quizzesList.isEmpty
-        ? const GifWidget(gifPath: AssetPaths.iKnowAnswer, title: noQuizTitle)
+        ? const NoDataNotify(
+            gifPath: AssetPaths.iKnowAnswer, title: noQuizTitle)
         : Column(
             children: [
               Expanded(
@@ -41,13 +42,7 @@ class LearnedQuizzesList extends ConsumerWidget {
                       );
                     }
                     return quizzesList[index - 1].isLearned
-                        ? Container(
-                            margin: const EdgeInsets.symmetric(
-                              horizontal: 10.0,
-                              vertical: 5.0,
-                            ),
-                            child: QuizTile(quizzesList[index - 1]),
-                          )
+                        ? QuizTile(quizzesList[index - 1])
                         : null;
                   },
                 ),

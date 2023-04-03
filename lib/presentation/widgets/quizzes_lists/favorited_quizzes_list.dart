@@ -14,6 +14,9 @@ class FavoritedQuizzesList extends ConsumerWidget {
     Key? key,
   }) : super(key: key);
 
+  //TODO: Check if it's good idea
+  static const String favorite = 'Favorite';
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     const String noQuizTitle = 'No Quizzes Added';
@@ -23,7 +26,8 @@ class FavoritedQuizzesList extends ConsumerWidget {
         .toList();
 
     return quizzesList.isEmpty
-        ? const GifWidget(gifPath: AssetPaths.chillRelaxPath, title: noQuizTitle)
+        ? const NoDataNotify(
+            gifPath: AssetPaths.chillRelaxPath, title: noQuizTitle)
         : Column(
             mainAxisSize: MainAxisSize.max,
             children: [
@@ -36,7 +40,7 @@ class FavoritedQuizzesList extends ConsumerWidget {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 20.0, vertical: 10.0),
                         child: Text(
-                          'Favorites',
+                          favorite,
                           style: AppTextStyles.titleMedium.copyWith(
                             color: AppColors.secondary,
                             fontWeight: FontWeight.bold,
@@ -44,13 +48,7 @@ class FavoritedQuizzesList extends ConsumerWidget {
                         ),
                       );
                     }
-                    return Container(
-                      margin: const EdgeInsets.symmetric(
-                        horizontal: 10.0,
-                        vertical: 5.0,
-                      ),
-                      child: QuizTile(quizzesList[index - 1]),
-                    );
+                    return QuizTile(quizzesList[index - 1]);
                   },
                 ),
               ),

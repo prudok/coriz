@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:quizzylite/core/constants/app_text_styles.dart';
 
 
-class GifWidget extends StatelessWidget {
-  const GifWidget({super.key, required this.gifPath, required this.title});
+class NoDataNotify extends StatelessWidget {
+  const NoDataNotify({super.key, required this.gifPath, required this.title});
 
   final String gifPath;
   final String title;

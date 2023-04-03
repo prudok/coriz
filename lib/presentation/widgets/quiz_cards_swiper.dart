@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_swiper_view/flutter_swiper_view.dart';
 import 'package:go_router/go_router.dart';
 
+import 'extensions/extensions.dart';
 import 'gif_widget.dart';
 import '../../core/constants/asset_paths.dart';
 import 'quiz_card.dart';
@@ -20,10 +21,11 @@ class QuizCardsView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     const String noQuizTitle = 'Add At Least Two Cards';
+    final messenger = ScaffoldMessenger.of(context);
     final model = ref.watch(quizListModel);
-    final quizzesList = model.state.quizList;
+    //TODO: Do the same thing in other files
     final favoritesQuizzesList =
-        quizzesList.where((quiz) => quiz.isFavorite == true).toList();
+        model.state.quizList.where((quiz) => quiz.isFavorite == true).toList();
 
     return Center(
       child: ListView(
@@ -31,7 +33,9 @@ class QuizCardsView extends ConsumerWidget {
         shrinkWrap: true,
         children: [
           favoritesQuizzesList.length < 2
-              ? const GifWidget(gifPath: AssetPaths.sleepingWithPillowPath, title: noQuizTitle)
+              ? const NoDataNotify(
+                  gifPath: AssetPaths.sleepingWithPillowPath,
+                  title: noQuizTitle)
               : Swiper(
                   itemWidth: MediaQuery.of(context).size.width,
                   itemHeight: MediaQuery.of(context).size.height / 2,
@@ -45,13 +49,7 @@ class QuizCardsView extends ConsumerWidget {
                             isFavorite: false,
                           ),
                         );
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            backgroundColor: AppColors.secondary,
-                            content: Text('Word Learned!'),
-                            duration: Duration(seconds: 2),
-                          ),
-                        );
+                        messenger.toast('Word Learned!');
                       },
                       child: QuizCard(favoritesQuizzesList[index].word),
                     );
@@ -66,7 +64,7 @@ class QuizCardsView extends ConsumerWidget {
             icon: const Icon(
               Icons.add,
               color: AppColors.green,
-              size: 40,
+              size: 50,
             ),
           ),
         ],
@@ -74,4 +72,3 @@ class QuizCardsView extends ConsumerWidget {
     );
   }
 }
-

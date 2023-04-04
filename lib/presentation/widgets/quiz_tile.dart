@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:quizzylite/presentation/viewmodel/module.dart';
-import 'package:quizzylite/presentation/views/edit_quiz_view.dart';
 
-import '../../domain/entities/quiz/quiz.dart';
-import '../../core/constants/app_colors.dart';
-import '../../core/constants/app_text_styles.dart';
+import '../../../core/constants/app_colors.dart';
+import '../../../core/constants/app_text_styles.dart';
+import '../../../domain/entities/quiz/quiz.dart';
+import '../viewmodel/module.dart';
+import '../views/edit_quiz_view.dart';
 
 class QuizTile extends ConsumerWidget {
   const QuizTile(this.quiz, {super.key});
@@ -22,6 +22,32 @@ class QuizTile extends ConsumerWidget {
         vertical: 5.0,
       ),
       child: GestureDetector(
+        onDoubleTap: () {
+          showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                title: const Text('Are you sure?'),
+                content: const Text('Do you want to delete this word?'),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: const Text('Cancel'),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      model.delete(quiz.id);
+                    },
+                    child: const Text('Delete'),
+                  )
+                ],
+              );
+            },
+          );
+        },
         onLongPress: () {
           context.push('${EditQuizView.routeName}${quiz.id}');
         },
@@ -43,7 +69,7 @@ class QuizTile extends ConsumerWidget {
             icon: Icon(
               quiz.isFavorite ? Icons.star : Icons.star_border_outlined,
               size: 30,
-              color: AppColors.secondary,
+              color: AppColors.primary,
             ),
           ),
           shape: RoundedRectangleBorder(

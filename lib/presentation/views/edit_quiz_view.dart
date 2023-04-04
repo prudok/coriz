@@ -66,7 +66,7 @@ class _EditQuizViewState extends ConsumerState<EditQuizView> {
               icon: const Icon(
                 Icons.transform,
                 size: 30,
-                color: AppColors.secondary,
+                color: AppColors.primary,
               ),
               style: IconButton.styleFrom(
                 backgroundColor: AppColors.lightGrey,
@@ -116,7 +116,7 @@ class _EditQuizViewState extends ConsumerState<EditQuizView> {
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.lightGrey,
-                foregroundColor: AppColors.secondary,
+                foregroundColor: AppColors.primary,
               ),
               child: const Text('Save'),
             ),

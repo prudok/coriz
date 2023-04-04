@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:quizzylite/core/constants/asset_paths.dart';
-import 'package:quizzylite/presentation/widgets/gif_widget.dart';
 
-import '../../../core/constants/app_text_styles.dart';
-import '../quiz_tile.dart';
+import '../../../../core/constants/app_text_styles.dart';
+import '../../../../core/constants/asset_paths.dart';
 import '../../viewmodel/module.dart';
+import '../gif_widget.dart';
+import '../quiz_tile.dart';
 
 class NewQuizzesList extends ConsumerWidget {
   const NewQuizzesList({
@@ -22,7 +22,9 @@ class NewQuizzesList extends ConsumerWidget {
 
     return quizzesList.isEmpty
         ? const NoDataNotify(
-            gifPath: AssetPaths.sleepingWithPillowPath, title: noQuizTitle)
+            gifPath: AssetPaths.sleepingWithPillowPath,
+            title: noQuizTitle,
+          )
         : Column(
             mainAxisSize: MainAxisSize.max,
             children: [

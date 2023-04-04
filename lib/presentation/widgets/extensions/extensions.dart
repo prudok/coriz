@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/constants/app_colors.dart';
+import '../../../../core/constants/app_colors.dart';
 
 extension ScaffoldMessengerStateUtils on ScaffoldMessengerState {
   void toast(String message) {
@@ -8,7 +8,7 @@ extension ScaffoldMessengerStateUtils on ScaffoldMessengerState {
       SnackBar(
         content: Text(message),
         duration: const Duration(seconds: 1),
-        backgroundColor: AppColors.secondary,
+        backgroundColor: AppColors.primary,
       ),
     );
   }

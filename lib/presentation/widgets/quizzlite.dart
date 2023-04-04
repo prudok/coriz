@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../config/routes/router.dart';
-import '../../config/themes/dark_blue_theme/dark_blue_theme.dart';
+import '../../../config/routes/router.dart';
+import '../../../config/themes/dark_blue_theme/dark_amber_theme.dart';
 
 class QuizzLite extends ConsumerWidget {
   const QuizzLite({

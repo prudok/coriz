@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:quizzylite/core/constants/asset_paths.dart';
-import 'package:quizzylite/presentation/widgets/gif_widget.dart';
 
+import '../../../../core/constants/app_text_styles.dart';
+import '../../../../core/constants/asset_paths.dart';
+import '../../../../domain/entities/quiz/quiz.dart';
 import '../../viewmodel/module.dart';
-import '../../../core/constants/app_text_styles.dart';
-import '../../../domain/entities/quiz/quiz.dart';
+import '../gif_widget.dart';
 import '../quiz_tile.dart';
 
 class LearnedQuizzesList extends ConsumerWidget {
@@ -16,8 +16,11 @@ class LearnedQuizzesList extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     const String noQuizTitle = 'No Quizzes Learned';
-    final quizzesListState = ref.watch(quizListState);
-    List<Quiz> quizzesList = quizzesListState.quizList;
+    final quizzesListState = ref.watch(quizListModel);
+    //TODO: Fix code below
+    List<Quiz> quizzesList = quizzesListState.state.quizList
+        .where((quiz) => quiz.isLearned)
+        .toList();
 
     return quizzesList.isEmpty
         ? const NoDataNotify(

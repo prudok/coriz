@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:quizzylite/core/constants/app_text_styles.dart';
 
 import '../../core/constants/app_colors.dart';
 import '../widgets/quizzes_lists/favorited_quizzes_list.dart';
@@ -27,9 +28,9 @@ class DictionaryView extends ConsumerWidget {
             unselectedLabelColor: Colors.grey,
             labelColor: AppColors.primary,
             tabs: [
-              Text('Favorites'),
-              Text('New'),
-              Text('Learned'),
+              Text('Favorites', style: AppTextStyles.bodyLarge),
+              Text('New', style: AppTextStyles.bodyLarge),
+              Text('Learned', style: AppTextStyles.bodyLarge),
             ],
           ),
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../core/constants/app_colors.dart';
 
@@ -11,6 +12,7 @@ ThemeData lightAmberTheme() => ThemeData.light(useMaterial3: true).copyWith(
       colorScheme: lightAmberColorScheme,
       splashColor: Colors.transparent,
       highlightColor: Colors.transparent,
+      textTheme: GoogleFonts.stylishTextTheme(),
       appBarTheme: const AppBarTheme().copyWith(
         surfaceTintColor: Colors.transparent,
         color: Colors.transparent,

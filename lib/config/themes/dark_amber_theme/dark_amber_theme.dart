@@ -7,11 +7,19 @@ final darkAmberColorScheme = ColorScheme.fromSeed(
   brightness: Brightness.dark,
 );
 
-ThemeData darkBlueTheme() => ThemeData.dark(useMaterial3: true).copyWith(
+ThemeData darkAmberTheme() => ThemeData.dark(useMaterial3: true).copyWith(
       colorScheme: darkAmberColorScheme,
       splashColor: Colors.transparent,
+      highlightColor: Colors.transparent,
       appBarTheme: const AppBarTheme().copyWith(
         surfaceTintColor: Colors.transparent,
         color: Colors.transparent,
+      ),
+      cardTheme: const CardTheme().copyWith(
+        color: AppColors.blackGrey,
+        surfaceTintColor: Colors.transparent,
+      ),
+      listTileTheme: const ListTileThemeData().copyWith(
+       tileColor: AppColors.lightGrey, 
       ),
     );

@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/constants/app_colors.dart';
-import '../viewmodel/module.dart';
 import '../widgets/quizzes_lists/favorited_quizzes_list.dart';
 import '../widgets/quizzes_lists/learned_quizzes_list.dart';
 import '../widgets/quizzes_lists/new_quizzes_list.dart';
@@ -50,22 +49,5 @@ class DictionaryView extends ConsumerWidget {
         ),
       ),
     );
-  }
-}
-
-class QuizListView extends ConsumerWidget {
-  const QuizListView({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    //TODO: check this error
-    bool isThereQuizzes = ref.watch(quizListModel).state.quizList.isEmpty;
-    return !isThereQuizzes
-        ? const Center(
-            child: Text('No Quizzes.'),
-          )
-        : Container();
   }
 }

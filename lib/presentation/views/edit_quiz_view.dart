@@ -68,6 +68,7 @@ class _EditQuizViewState extends ConsumerState<EditQuizView> {
                 size: 30,
                 color: AppColors.primary,
               ),
+              //TODO: add color theme
               style: IconButton.styleFrom(
                 backgroundColor: AppColors.lightGrey,
                 padding: const EdgeInsets.all(15.0),
@@ -116,7 +117,6 @@ class _EditQuizViewState extends ConsumerState<EditQuizView> {
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.lightGrey,
-                foregroundColor: AppColors.primary,
               ),
               child: const Text('Save'),
             ),

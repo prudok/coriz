@@ -29,6 +29,7 @@ class OptionTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      tileColor: Colors.transparent,
       contentPadding:
           const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
       title: Text(title, style: AppTextStyles.bodyLarge),

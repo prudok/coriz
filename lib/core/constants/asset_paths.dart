@@ -4,5 +4,5 @@ class AssetPaths {
   static const String sleepingWithPillowPath = 'assets/gifs/sleeping_with_pillow.gif';
   static const String thankYouPath = 'assets/gifs/thank_you.gif';
   static const String giphyPath = 'assets/gifs/giphy.gif';
-  static const String iKnowAnswer= 'assets/gifs/i_know_answer.gif';
+  static const String iKnowAnswerPath= 'assets/gifs/i_know_answer.gif';
 }

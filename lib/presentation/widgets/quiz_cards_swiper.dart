@@ -25,16 +25,14 @@ class QuizCardsView extends ConsumerWidget {
         model.state.quizList.where((quiz) => quiz.isFavorite).toList();
 
     return Center(
-      child: ListView(
-        padding: const EdgeInsets.all(5.0),
-        shrinkWrap: true,
-        children: [
-          favoritesQuizzesList.length < 2
-              ? const NoDataNotify(
-                  gifPath: AssetPaths.sleepingWithPillowPath,
-                  title: noQuizTitle,
-                )
-              : Swiper(
+      child: favoritesQuizzesList.length < 2
+          ? const NoDataNotify(
+              gifPath: AssetPaths.sleepingWithPillowPath, title: noQuizTitle)
+          : ListView(
+              padding: const EdgeInsets.all(5.0),
+              shrinkWrap: true,
+              children: [
+                Swiper(
                   itemWidth: MediaQuery.of(context).size.width,
                   itemHeight: MediaQuery.of(context).size.height / 2,
                   itemBuilder: (context, index) {
@@ -55,8 +53,8 @@ class QuizCardsView extends ConsumerWidget {
                   itemCount: favoritesQuizzesList.length,
                   layout: SwiperLayout.STACK,
                 ),
-        ],
-      ),
+              ],
+            ),
     );
   }
 }

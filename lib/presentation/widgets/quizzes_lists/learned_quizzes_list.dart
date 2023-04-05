@@ -16,15 +16,14 @@ class LearnedQuizzesList extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     const String noQuizTitle = 'No Quizzes Learned';
-    final quizzesListState = ref.watch(quizListModel);
-    //TODO: Fix code below
-    List<Quiz> quizzesList = quizzesListState.state.quizList
+    final quizzesListState = ref.watch(quizListState);
+    List<Quiz> quizzesList = quizzesListState.quizList
         .where((quiz) => quiz.isLearned)
         .toList();
 
     return quizzesList.isEmpty
         ? const NoDataNotify(
-            gifPath: AssetPaths.iKnowAnswer, title: noQuizTitle)
+            gifPath: AssetPaths.iKnowAnswerPath, title: noQuizTitle)
         : Column(
             children: [
               Expanded(

@@ -22,32 +22,6 @@ class QuizTile extends ConsumerWidget {
         vertical: 5.0,
       ),
       child: GestureDetector(
-        onDoubleTap: () {
-          showDialog(
-            context: context,
-            builder: (context) {
-              return AlertDialog(
-                title: const Text('Are you sure?'),
-                content: const Text('Do you want to delete this word?'),
-                actions: [
-                  TextButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: const Text('Cancel'),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                      model.delete(quiz.id);
-                    },
-                    child: const Text('Delete'),
-                  )
-                ],
-              );
-            },
-          );
-        },
         onLongPress: () {
           context.push('${EditQuizView.routeName}${quiz.id}');
         },
@@ -58,19 +32,50 @@ class QuizTile extends ConsumerWidget {
           ),
           subtitle: Text(
             quiz.concept,
-            style: AppTextStyles.bodyMedium,
-            softWrap: true,
+            style: AppTextStyles.bodyMedium, softWrap: true,
           ),
-          tileColor: AppColors.lightGrey,
-          trailing: IconButton(
-            onPressed: () {
-              model.save(quiz.copyWith(isFavorite: !quiz.isFavorite));
-            },
-            icon: Icon(
-              quiz.isFavorite ? Icons.star : Icons.star_border_outlined,
-              size: 30,
-              color: AppColors.primary,
-            ),
+          trailing: Wrap(
+            children: [
+              IconButton(
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          title: const Text('Are you sure?'),
+                          content:
+                              const Text('Do you want to delete this word?'),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: const Text('Cancel'),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                                model.delete(quiz.id);
+                              },
+                              child: const Text('Delete'),
+                            )
+                          ],
+                        );
+                      },
+                    );
+                  },
+                  icon: const Icon(Icons.remove)),
+              IconButton(
+                onPressed: () {
+                  model.save(quiz.copyWith(isFavorite: !quiz.isFavorite));
+                },
+                icon: Icon(
+                  quiz.isFavorite ? Icons.star : Icons.star_border_outlined,
+                  size: 30,
+                  color: AppColors.primary,
+                ),
+              ),
+            ],
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),

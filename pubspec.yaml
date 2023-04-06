@@ -44,6 +44,7 @@ dependencies:
   shortid: ^0.1.2
   google_fonts: ^4.0.3
   translator: ^0.1.7
+  percent_indicator: ^4.2.3
 
 dev_dependencies:
   flutter_test:

@@ -1,25 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../core/constants/app_colors.dart';
+import '../../domain/entities/quiz/quiz.dart';
 
-class QuizCard extends ConsumerWidget {
-  const QuizCard(this.title, {super.key});
-  final String title;
+class QuizCard extends StatefulWidget {
+  final Quiz quiz;
 
+  const QuizCard({super.key, required this.quiz});
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20.0),
-      ),
-      child: Center(
-        child: Text(
-          title,
-          softWrap: true,
-          style: const TextStyle(
-            color: Colors.yellow,
-            fontSize: 35,
+  State<QuizCard> createState() => _QuizCardState();
+}
+
+class _QuizCardState extends State<QuizCard> {
+  bool showConcept = false;
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onDoubleTap: () {
+        setState(() {
+          showConcept = !showConcept;
+        });
+      },
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        child: Center(
+          child: Text(
+            !showConcept ? widget.quiz.word: widget.quiz.concept,
+            softWrap: true,
+            style: const TextStyle(
+              color: Colors.yellow,
+              fontSize: 35,
+            ),
           ),
         ),
       ),

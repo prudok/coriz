@@ -32,7 +32,8 @@ class QuizTile extends ConsumerWidget {
           ),
           subtitle: Text(
             quiz.concept,
-            style: AppTextStyles.bodyMedium, softWrap: true,
+            style: AppTextStyles.bodyMedium,
+            softWrap: true,
           ),
           trailing: Wrap(
             children: [
@@ -41,26 +42,7 @@ class QuizTile extends ConsumerWidget {
                     showDialog(
                       context: context,
                       builder: (context) {
-                        return AlertDialog(
-                          title: const Text('Are you sure?'),
-                          content:
-                              const Text('Do you want to delete this word?'),
-                          actions: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                              child: const Text('Cancel'),
-                            ),
-                            TextButton(
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                                model.delete(quiz.id);
-                              },
-                              child: const Text('Delete'),
-                            )
-                          ],
-                        );
+                        return DeletingDialog(model: model, quiz: quiz);
                       },
                     );
                   },
@@ -84,6 +66,44 @@ class QuizTile extends ConsumerWidget {
               const EdgeInsets.symmetric(vertical: 5.0, horizontal: 25.0),
         ),
       ),
+    );
+  }
+}
+
+class DeletingDialog extends StatelessWidget {
+  const DeletingDialog({
+    super.key,
+    required this.model,
+    required this.quiz,
+  });
+
+  final QuizzesStateNotifier model;
+  final Quiz quiz;
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: const Text(
+        'Are you sure?',
+        style: TextStyle(color: AppColors.primary),
+      ),
+      content:
+          const Text('Do you want to delete this word?'),
+      actions: [
+        TextButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: const Text('Cancel'),
+        ),
+        TextButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+            model.delete(quiz.id);
+          },
+          child: const Text('Delete'),
+        )
+      ],
     );
   }
 }

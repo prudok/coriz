@@ -43,6 +43,7 @@ dependencies:
   flutter_riverpod: ^2.3.2
   shortid: ^0.1.2
   google_fonts: ^4.0.3
+  translator: ^0.1.7
 
 dev_dependencies:
   flutter_test:

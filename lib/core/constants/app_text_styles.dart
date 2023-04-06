@@ -5,7 +5,7 @@ class AppTextStyles {
     fontSize: 20,
     fontWeight: FontWeight.bold,
   );
-  static const TextStyle bodyMedium= TextStyle(
+  static const TextStyle bodyMedium = TextStyle(
     fontSize: 16,
   );
   static const TextStyle titleMedium = TextStyle(

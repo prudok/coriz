@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../config/routes/router.dart';
 import '../../config/themes/dark_amber_theme/dark_amber_theme.dart';
-import '../../config/themes/dark_amber_theme/light_amer_theme.dart';
+import '../../config/themes/light_amber_theme/light_amber_theme.dart';
 
 class QuizzLite extends ConsumerWidget {
   const QuizzLite({

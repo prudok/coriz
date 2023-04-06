@@ -42,8 +42,8 @@ class _HomeViewState extends State<HomeView> {
       ) : null,
       body: _viewsOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
-        selectedFontSize: 17,
-        unselectedFontSize: 17,
+        selectedFontSize: 15,
+        unselectedFontSize: 15,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.quiz),

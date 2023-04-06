@@ -20,7 +20,7 @@ class QuizCardsView extends ConsumerWidget {
     const String noQuizTitle = 'Add At Least Two Cards';
     final messenger = ScaffoldMessenger.of(context);
     final model = ref.watch(quizListModel);
-    //TODO: Do the same thing in other files
+    // TODO: Do the same thing in other files
     final favoritesQuizzesList =
         model.state.quizList.where((quiz) => quiz.isFavorite).toList();
 

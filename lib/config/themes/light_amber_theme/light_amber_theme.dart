@@ -12,10 +12,21 @@ ThemeData lightAmberTheme() => ThemeData.light(useMaterial3: true).copyWith(
       colorScheme: lightAmberColorScheme,
       splashColor: Colors.transparent,
       highlightColor: Colors.transparent,
-      textTheme: GoogleFonts.stylishTextTheme(),
+      shadowColor: Colors.transparent,
+      textTheme: GoogleFonts.stylishTextTheme().copyWith(
+        bodyLarge: GoogleFonts.stylishTextTheme().bodyLarge?.copyWith(
+              color: AppColors.blackGrey,
+            ),
+        bodyMedium: GoogleFonts.stylishTextTheme().bodyMedium?.copyWith(
+              color: AppColors.blackGrey,
+            ),
+        bodySmall: GoogleFonts.stylishTextTheme().bodySmall?.copyWith(
+              color: AppColors.blackGrey,
+            ),
+      ),
       appBarTheme: const AppBarTheme().copyWith(
         surfaceTintColor: Colors.transparent,
-        color: Colors.transparent,
+        color: Colors.white,
       ),
       cardTheme: const CardTheme().copyWith(
         color: AppColors.easyGrey,

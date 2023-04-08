@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_swiper_view/flutter_swiper_view.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'package:quizzylite/core/constants/app_colors.dart';
 
 import '../../../core/constants/asset_paths.dart';
+import '../../core/constants/app_colors.dart';
 import '../../domain/entities/quiz/quiz.dart';
 import '../viewmodel/module.dart';
 import 'extensions/extensions.dart';
@@ -40,7 +40,7 @@ class _QuizCardsViewState extends ConsumerState<QuizCardsView> {
     return Center(
       child: quizzesList.isEmpty
           ? const NoDataNotify(
-              gifPath: AssetPaths.sleepingWithPillowPath, title: noQuizTitle)
+              gifPath: AssetPaths.thinkingDogPath, title: noQuizTitle)
           : Column(
             mainAxisAlignment: MainAxisAlignment.center,
               children: [

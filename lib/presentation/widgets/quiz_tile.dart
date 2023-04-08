@@ -63,7 +63,7 @@ class QuizTile extends ConsumerWidget {
             borderRadius: BorderRadius.circular(20),
           ),
           contentPadding:
-              const EdgeInsets.symmetric(vertical: 5.0, horizontal: 25.0),
+              const EdgeInsets.symmetric(vertical: 5.0, horizontal: 20.0),
         ),
       ),
     );

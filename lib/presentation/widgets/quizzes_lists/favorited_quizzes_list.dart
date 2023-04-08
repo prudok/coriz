@@ -14,9 +14,6 @@ class FavoritedQuizzesList extends ConsumerWidget {
     Key? key,
   }) : super(key: key);
 
-  //TODO: Check if it's good idea
-  static const String favorite = 'Favorite';
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     const String noQuizTitle = 'No Quizzes Added';
@@ -42,7 +39,7 @@ class FavoritedQuizzesList extends ConsumerWidget {
                           vertical: 10.0,
                         ),
                         child: Text(
-                          favorite,
+                          'Favorite',
                           style: AppTextStyles.titleMedium.copyWith(
                             color: AppColors.primary,
                             fontWeight: FontWeight.bold,

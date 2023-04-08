@@ -19,13 +19,19 @@ class EditQuizView extends ConsumerStatefulWidget {
 }
 
 class _EditQuizViewState extends ConsumerState<EditQuizView> {
-  //TODO: Dispose these ones
   final TextEditingController _wordController = TextEditingController();
   final TextEditingController _conceptController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final translator = GoogleTranslator();
 
   late final model = ref.read(quizListModel);
+
+  @override
+  void dispose() {
+    _wordController.dispose();
+    _conceptController.dispose();
+    super.dispose();
+  }
 
   @override
   void initState() {

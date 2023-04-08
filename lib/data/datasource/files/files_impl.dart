@@ -7,7 +7,6 @@ import 'files.dart';
 class FilesImpl extends Files {
   @override
   Future<void> delete(String path) {
-    // TODO: implement delete
     throw UnimplementedError();
   }
 

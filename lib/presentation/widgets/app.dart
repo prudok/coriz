@@ -17,7 +17,7 @@ class QuizzLite extends ConsumerWidget {
       debugShowCheckedModeBanner: false,
       theme: lightAmberTheme(),
       darkTheme: darkAmberTheme(),
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.system,
     );
   }
 }

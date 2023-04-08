@@ -35,7 +35,6 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //TODO: Fix code below
       appBar: _selectedIndex != 1 ? AppBar(
         title: _viewsAppBarTitles.elementAt(_selectedIndex),
         centerTitle: true,

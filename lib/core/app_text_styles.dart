@@ -8,6 +8,9 @@ class AppTextStyles {
   static const TextStyle bodyMedium = TextStyle(
     fontSize: 16,
   );
+  static const TextStyle bodySmall= TextStyle(
+    fontSize: 15,
+  );
   static const TextStyle titleMedium = TextStyle(
     fontSize: 35,
   );

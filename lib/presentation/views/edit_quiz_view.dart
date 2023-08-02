@@ -75,7 +75,7 @@ class _EditQuizViewState extends ConsumerState<EditQuizView> {
                   return;
                 }
                 await translator
-                    .translate(_wordController.text, to: 'ru')
+                    .translate(_wordController.text)
                     .then((translatedWord) {
                   if (translatedWord.text == _wordController.text) {
                     messenger.toast("Couldn't Found Translate");
@@ -84,7 +84,7 @@ class _EditQuizViewState extends ConsumerState<EditQuizView> {
                   }
                 });
               },
-              child: const Text('Translate'),
+              child: const Text('Translate into Russian'),
             ),
             Container(
               margin: const EdgeInsets.symmetric(

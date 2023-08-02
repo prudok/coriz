@@ -11,7 +11,6 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_swiper_view: ^1.1.8
-
   cupertino_icons: ^1.0.2
   freezed_annotation: ^2.2.0
   json_annotation: ^4.8.0

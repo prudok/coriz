@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-
-import '../../core/constants/app_colors.dart';
-import '../widgets/card_swiper.dart';
-import 'dictionary_view.dart';
-import 'settings_view.dart';
+import 'package:quizzylite/core/app_colors.dart';
+import 'package:quizzylite/presentation/views/dictionary_view.dart';
+import 'package:quizzylite/presentation/views/settings_view.dart';
+import 'package:quizzylite/presentation/widgets/card_swiper.dart';
 
 class HomeView extends StatefulWidget {
-  const HomeView({Key? key}) : super(key: key);
+  const HomeView({super.key});
+
   static const routeName = '/';
 
   @override
@@ -35,10 +35,12 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _selectedIndex != 1 ? AppBar(
-        title: _viewsAppBarTitles.elementAt(_selectedIndex),
-        centerTitle: true,
-      ) : null,
+      appBar: _selectedIndex != 1
+          ? AppBar(
+              title: _viewsAppBarTitles.elementAt(_selectedIndex),
+              centerTitle: true,
+            )
+          : null,
       body: _viewsOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         selectedFontSize: 15,
@@ -64,4 +66,3 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 }
-

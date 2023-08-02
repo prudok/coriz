@@ -1,32 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:quizzylite/core/core.dart';
+import 'package:quizzylite/presentation/module.dart';
+import 'package:quizzylite/presentation/widgets/widgets.dart';
 
-import '../../../../core/constants/app_text_styles.dart';
-import '../../../../core/constants/asset_paths.dart';
-import '../../viewmodel/module.dart';
-import '../gif_widget.dart';
-import '../quiz_tile.dart';
-
-class NewQuizzesList extends ConsumerWidget {
-  const NewQuizzesList({
-    Key? key,
-  }) : super(key: key);
+class FavoritedQuizzesList extends ConsumerWidget {
+  const FavoritedQuizzesList({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    const String noQuizTitle = 'No New Quizzes';
-    final quizzesListState = ref.watch(quizListState);
-    final quizzesList = quizzesListState.quizList
-        .where((quiz) => quiz.isLearned == false)
-        .toList();
+    const noQuizTitle = 'No Quizzes Added';
+    final quizzesListState = ref.watch(quizState);
+    final quizzesList =
+        quizzesListState.quizList.where((quiz) => quiz.isFavorite).toList();
 
     return quizzesList.isEmpty
         ? const NoDataNotify(
-            gifPath: AssetPaths.sleepingWithPillowPath,
+            gifPath: AssetPaths.chillRelaxPath,
             title: noQuizTitle,
           )
         : Column(
-            mainAxisSize: MainAxisSize.max,
             children: [
               Expanded(
                 child: ListView.builder(
@@ -35,11 +28,13 @@ class NewQuizzesList extends ConsumerWidget {
                     if (index == 0) {
                       return Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 20.0, vertical: 10.0),
+                          horizontal: 20,
+                          vertical: 10,
+                        ),
                         child: Text(
-                          'New',
+                          'Favorite',
                           style: AppTextStyles.titleMedium.copyWith(
-                            color: Colors.grey,
+                            color: AppColors.primary,
                             fontWeight: FontWeight.bold,
                           ),
                         ),

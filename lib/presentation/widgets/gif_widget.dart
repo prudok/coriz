@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-
-import '../../../core/constants/app_text_styles.dart';
+import 'package:quizzylite/core/app_text_styles.dart';
 
 class NoDataNotify extends StatelessWidget {
-  const NoDataNotify({super.key, required this.gifPath, required this.title});
+  const NoDataNotify({
+    required this.gifPath,
+    required this.title,
+    super.key,
+  });
 
   final String gifPath;
   final String title;

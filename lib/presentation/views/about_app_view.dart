@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quizzylite/core/constants/app_text_styles.dart';
+import 'package:quizzylite/core/app_text_styles.dart';
 
 class AboutAppView extends StatelessWidget {
   const AboutAppView({super.key});
@@ -13,7 +13,7 @@ class AboutAppView extends StatelessWidget {
         title: const Text('About App'),
       ),
       body: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.0),
+        padding: EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -23,7 +23,10 @@ class AboutAppView extends StatelessWidget {
                 style: AppTextStyles.titleMedium,
               ),
             ),
-            Text('Github Repo: https://github.com/rel1nce/coriz', style: AppTextStyles.bodyLarge,),
+            Text(
+              'Github Repo: https://github.com/rel1nce/coriz',
+              style: AppTextStyles.bodyLarge,
+            ),
           ],
         ),
       ),

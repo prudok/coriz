@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-
-import '../../../core/constants/app_colors.dart';
-import '../../../core/constants/app_text_styles.dart';
-import '../../../domain/entities/quiz/quiz.dart';
-import '../viewmodel/module.dart';
-import '../views/edit_quiz_view.dart';
+import 'package:quizzylite/core/app_colors.dart';
+import 'package:quizzylite/core/app_text_styles.dart';
+import 'package:quizzylite/domain/entities/quiz.dart';
+import 'package:quizzylite/presentation/module.dart';
+import 'package:quizzylite/presentation/views/edit_quiz_view.dart';
 
 class QuizTile extends ConsumerWidget {
   const QuizTile(this.quiz, {super.key});
@@ -15,11 +14,11 @@ class QuizTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final model = ref.watch(quizListModel);
+    final model = ref.watch(quizModel);
     return Container(
       margin: const EdgeInsets.symmetric(
-        horizontal: 10.0,
-        vertical: 5.0,
+        horizontal: 10,
+        vertical: 5,
       ),
       child: GestureDetector(
         onLongPress: () {
@@ -38,15 +37,16 @@ class QuizTile extends ConsumerWidget {
           trailing: Wrap(
             children: [
               IconButton(
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return DeletingDialog(model: model, quiz: quiz);
-                      },
-                    );
-                  },
-                  icon: const Icon(Icons.remove)),
+                onPressed: () {
+                  showDialog<void>(
+                    context: context,
+                    builder: (context) {
+                      return DeletingDialog(model: model, quiz: quiz);
+                    },
+                  );
+                },
+                icon: const Icon(Icons.remove),
+              ),
               IconButton(
                 onPressed: () {
                   model.save(quiz.copyWith(isFavorite: !quiz.isFavorite));
@@ -62,8 +62,10 @@ class QuizTile extends ConsumerWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
-          contentPadding:
-              const EdgeInsets.symmetric(vertical: 5.0, horizontal: 20.0),
+          contentPadding: const EdgeInsets.symmetric(
+            vertical: 5,
+            horizontal: 20,
+          ),
         ),
       ),
     );
@@ -72,9 +74,9 @@ class QuizTile extends ConsumerWidget {
 
 class DeletingDialog extends StatelessWidget {
   const DeletingDialog({
-    super.key,
     required this.model,
     required this.quiz,
+    super.key,
   });
 
   final QuizzesStateNotifier model;
@@ -87,8 +89,7 @@ class DeletingDialog extends StatelessWidget {
         'Are you sure?',
         style: TextStyle(color: AppColors.primary),
       ),
-      content:
-          const Text('Do you want to delete this word?'),
+      content: const Text('Do you want to delete this word?'),
       actions: [
         TextButton(
           onPressed: () {

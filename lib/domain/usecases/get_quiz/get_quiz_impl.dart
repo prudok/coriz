@@ -1,6 +1,6 @@
-import '../../entities/quiz/quiz.dart';
-import '../../repositories/quiz_repository.dart';
-import 'get_quiz.dart';
+import 'package:quizzylite/domain/entities/quiz.dart';
+import 'package:quizzylite/domain/repositories/quiz_repository.dart';
+import 'package:quizzylite/domain/usecases/get_quiz/get_quiz.dart';
 
 class GetQuizImpl extends GetQuizUseCase {
   GetQuizImpl(this.quizRepository);

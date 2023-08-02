@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../../../config/routes/router.dart';
-import '../../config/themes/dark_amber_theme/dark_amber_theme.dart';
-import '../../config/themes/light_amber_theme/light_amber_theme.dart';
+import 'package:quizzylite/config/routes/router.dart';
+import 'package:quizzylite/config/themes/themes.dart';
 
 class QuizzLite extends ConsumerWidget {
-  const QuizzLite({
-    Key? key,
-  }) : super(key: key);
+  const QuizzLite({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -17,8 +13,6 @@ class QuizzLite extends ConsumerWidget {
       debugShowCheckedModeBanner: false,
       theme: lightAmberTheme(),
       darkTheme: darkAmberTheme(),
-      themeMode: ThemeMode.system,
     );
   }
 }
-

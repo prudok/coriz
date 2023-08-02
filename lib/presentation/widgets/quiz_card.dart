@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-
-import '../../domain/entities/quiz/quiz.dart';
+import 'package:quizzylite/domain/entities/quiz.dart';
 
 class QuizCard extends StatefulWidget {
-  final Quiz quiz;
+  const QuizCard({required this.quiz, super.key});
 
-  const QuizCard({super.key, required this.quiz});
+  final Quiz quiz;
   @override
   State<QuizCard> createState() => _QuizCardState();
 }
@@ -22,11 +21,11 @@ class _QuizCardState extends State<QuizCard> {
       },
       child: Card(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20.0),
+          borderRadius: BorderRadius.circular(20),
         ),
         child: Center(
           child: Text(
-            !showConcept ? widget.quiz.word: widget.quiz.concept,
+            !showConcept ? widget.quiz.word : widget.quiz.concept,
             softWrap: true,
             style: const TextStyle(
               color: Colors.yellow,

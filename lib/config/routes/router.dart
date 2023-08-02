@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:quizzylite/presentation/views/about_app_view.dart';
+import 'package:quizzylite/presentation/views/edit_quiz_view.dart';
+import 'package:quizzylite/presentation/views/home_view.dart';
 import 'package:quizzylite/presentation/views/terms_of_use.dart';
-
-import '../../presentation/views/about_app_view.dart';
-import '../../presentation/views/edit_quiz_view.dart';
-import '../../presentation/views/home_view.dart';
 
 final GoRouter router = GoRouter(
   initialLocation: HomeView.routeName,

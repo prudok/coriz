@@ -1,5 +1,5 @@
-import '../entities/quiz/quiz.dart';
-import '../entities/quizList/quiz_list.dart';
+import 'package:quizzylite/domain/entities/quiz.dart';
+import 'package:quizzylite/domain/entities/quiz_list.dart';
 
 abstract class QuizRepository {
   Future<QuizList> loadAllQuizzes();

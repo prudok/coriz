@@ -1,10 +1,10 @@
 import 'dart:convert';
-import 'package:collection/collection.dart';
 
-import '../../domain/entities/quiz/quiz.dart';
-import '../../domain/entities/quizList/quiz_list.dart';
-import '../../domain/repositories/quiz_repository.dart';
-import '../datasource/files/files.dart';
+import 'package:collection/collection.dart';
+import 'package:quizzylite/data/datasource/files/files.dart';
+import 'package:quizzylite/domain/entities/quiz.dart';
+import 'package:quizzylite/domain/entities/quiz_list.dart';
+import 'package:quizzylite/domain/repositories/quiz_repository.dart';
 
 class QuizRepositoryImpl extends QuizRepository {
   QuizRepositoryImpl(this.files);
@@ -37,7 +37,7 @@ class QuizRepositoryImpl extends QuizRepository {
     if (content == null) {
       return QuizList(quizList: []);
     }
-    return QuizList.fromJson(jsonDecode(content));
+    return QuizList.fromJson(jsonDecode(content) as Map<String, Object?>);
   }
 
   @override

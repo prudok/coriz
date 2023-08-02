@@ -1,8 +1,7 @@
 import 'dart:io';
 
 import 'package:path_provider/path_provider.dart';
-
-import 'files.dart';
+import 'package:quizzylite/data/datasource/files/files.dart';
 
 class FilesImpl extends Files {
   @override
@@ -15,7 +14,7 @@ class FilesImpl extends Files {
     try {
       final file = await _localFile;
       final contents = await file.readAsString();
-      return (contents);
+      return contents;
     } catch (error) {
       return null;
     }
@@ -24,7 +23,7 @@ class FilesImpl extends Files {
   @override
   Future<File> write(String content) async {
     final file = await _localFile;
-    return await file.writeAsString(content);
+    return file.writeAsString(content);
   }
 
   Future<String> get _localPath async {

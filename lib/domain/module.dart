@@ -1,16 +1,15 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'usecases/delete_quiz/delete_quiz.dart';
-import 'usecases/delete_quiz/delete_quiz_impl.dart';
-import 'usecases/delete_quizzes/delete_quizzes.dart';
-import 'usecases/delete_quizzes/delete_quizzes_impl.dart';
-import 'usecases/get_quiz/get_quiz.dart';
-import 'usecases/get_quiz/get_quiz_impl.dart';
-import 'usecases/get_quizzes/get_quizzes.dart';
-import 'usecases/get_quizzes/get_quizzes_impl.dart';
-import 'usecases/save_quiz/save_quiz.dart';
-import 'usecases/save_quiz/save_quiz_impl.dart';
-import '../data/repository/module.dart';
+import 'package:quizzylite/data/repository/module.dart';
+import 'package:quizzylite/domain/usecases/delete_quiz/delete_quiz.dart';
+import 'package:quizzylite/domain/usecases/delete_quiz/delete_quiz_impl.dart';
+import 'package:quizzylite/domain/usecases/delete_quizzes/delete_quizzes.dart';
+import 'package:quizzylite/domain/usecases/delete_quizzes/delete_quizzes_impl.dart';
+import 'package:quizzylite/domain/usecases/get_quiz/get_quiz.dart';
+import 'package:quizzylite/domain/usecases/get_quiz/get_quiz_impl.dart';
+import 'package:quizzylite/domain/usecases/get_quizzes/get_quizzes.dart';
+import 'package:quizzylite/domain/usecases/get_quizzes/get_quizzes_impl.dart';
+import 'package:quizzylite/domain/usecases/save_quiz/save_quiz.dart';
+import 'package:quizzylite/domain/usecases/save_quiz/save_quiz_impl.dart';
 
 final getQuizzesProvider = Provider<GetQuizzesUseCase>(
   (ref) => GetQuizzesImpl(ref.read(quizzesProvider)),

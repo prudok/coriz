@@ -2,14 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_swiper_view/flutter_swiper_view.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-
-import '../../../core/constants/asset_paths.dart';
-import '../../core/constants/app_colors.dart';
-import '../../domain/entities/quiz/quiz.dart';
-import '../viewmodel/module.dart';
-import 'extensions/extensions.dart';
-import 'gif_widget.dart';
-import 'quiz_card.dart';
+import 'package:quizzylite/core/core.dart';
+import 'package:quizzylite/domain/entities/quiz.dart';
+import 'package:quizzylite/presentation/module.dart';
+import 'package:quizzylite/presentation/widgets/widgets.dart';
 
 class QuizCardsView extends ConsumerStatefulWidget {
   const QuizCardsView({super.key});
@@ -22,35 +18,38 @@ class QuizCardsView extends ConsumerStatefulWidget {
 
 class _QuizCardsViewState extends ConsumerState<QuizCardsView> {
   late final int favoritedListLenght;
+
   @override
   void initState() {
     super.initState();
     favoritedListLenght =
-        ref.read(quizListState).quizList.where((qz) => qz.isFavorite).length;
+        ref.read(quizState).quizList.where((qz) => qz.isFavorite).length;
   }
 
   @override
   Widget build(BuildContext context) {
-    const String noQuizTitle = 'Add At Least One Card';
+    const noQuizTitle = 'Add At Least One Card';
     final messenger = ScaffoldMessenger.of(context);
-    final model = ref.watch(quizListModel);
-    final quizzesListState = ref.watch(quizListState);
-    List<Quiz> quizzesList =
+    final model = ref.watch(quizModel);
+    final quizzesListState = ref.watch(quizState);
+    final quizList =
         quizzesListState.quizList.where((quiz) => quiz.isFavorite).toList();
     return Center(
-      child: quizzesList.isEmpty
+      child: quizList.isEmpty
           ? const NoDataNotify(
-              gifPath: AssetPaths.thinkingDogPath, title: noQuizTitle)
+              gifPath: AssetPaths.thinkingDogPath,
+              title: noQuizTitle,
+            )
           : Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                FavoriteIndicator(
-                  quizzesList: quizzesList,
+                _FavoriteIndicator(
+                  quizzesList: quizList,
                   favoritedListLenght: favoritedListLenght,
                 ),
                 CardStack(
                   model: model,
-                  quizzesList: quizzesList,
+                  quizzesList: quizList,
                   messenger: messenger,
                 ),
               ],
@@ -59,9 +58,8 @@ class _QuizCardsViewState extends ConsumerState<QuizCardsView> {
   }
 }
 
-class FavoriteIndicator extends StatelessWidget {
-  const FavoriteIndicator({
-    super.key,
+class _FavoriteIndicator extends StatelessWidget {
+  const _FavoriteIndicator({
     required this.quizzesList,
     required this.favoritedListLenght,
   });
@@ -73,21 +71,21 @@ class FavoriteIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return LinearPercentIndicator(
       width: MediaQuery.of(context).size.width - 10,
-      lineHeight: 10.0,
+      lineHeight: 10.toDouble(),
       percent: 1 - quizzesList.length / favoritedListLenght,
       backgroundColor: AppColors.blackGrey,
       progressColor: AppColors.primary,
-      barRadius: const Radius.circular(10.0),
+      barRadius: const Radius.circular(10),
     );
   }
 }
 
 class CardStack extends StatelessWidget {
   const CardStack({
-    super.key,
     required this.model,
     required this.quizzesList,
     required this.messenger,
+    super.key,
   });
 
   final QuizzesStateNotifier model;

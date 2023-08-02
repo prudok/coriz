@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../../domain/entities/quizList/quiz_list.dart';
-import '../../domain/module.dart';
-import '../../domain/entities/quiz/quiz.dart';
+import 'package:quizzylite/core/error_handler.dart';
+import 'package:quizzylite/domain/entities/quiz.dart';
+import 'package:quizzylite/domain/entities/quiz_list.dart';
+import 'package:quizzylite/domain/module.dart';
 
 class QuizzesStateNotifier extends StateNotifier<QuizList> {
   QuizzesStateNotifier(this.ref) : super(QuizList(quizList: [])) {
@@ -18,11 +18,11 @@ class QuizzesStateNotifier extends StateNotifier<QuizList> {
 
   Future<void> save(Quiz quiz) async {
     await ref.read(saveQuizProvider).execute(quiz);
-    loadQuizzes();
+    await loadQuizzes();
   }
 
   Future<Quiz?> get(String id) async {
-    return await ref.read(getQuizProvider).execute(id);
+    return ref.read(getQuizProvider).execute(id);
   }
 
   Future<void> delete(String id) async {
@@ -31,11 +31,12 @@ class QuizzesStateNotifier extends StateNotifier<QuizList> {
   }
 }
 
-final quizListState =
-    StateNotifierProvider<QuizzesStateNotifier, QuizList>((ref) {
+final quizState = StateNotifierProvider<QuizzesStateNotifier, QuizList>((ref) {
   return QuizzesStateNotifier(ref);
 });
 
-final quizListModel = Provider<QuizzesStateNotifier>((ref) {
-  return ref.watch(quizListState.notifier);
+final quizModel = Provider<QuizzesStateNotifier>((ref) {
+  return ref.watch(quizState.notifier);
 });
+
+final errorHandler = ErrorHandler();

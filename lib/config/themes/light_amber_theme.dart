@@ -1,38 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:quizzylite/core/core.dart';
 
-import '../../../core/constants/app_colors.dart';
-
-final darkAmberColorScheme = ColorScheme.fromSeed(
+final lightAmberColorScheme = ColorScheme.fromSeed(
   seedColor: AppColors.primary,
-  brightness: Brightness.dark,
 );
 
-ThemeData darkAmberTheme() => ThemeData.dark(useMaterial3: true).copyWith(
-      colorScheme: darkAmberColorScheme,
+ThemeData lightAmberTheme() => ThemeData.light(useMaterial3: true).copyWith(
+      colorScheme: lightAmberColorScheme,
       splashColor: Colors.transparent,
       highlightColor: Colors.transparent,
       shadowColor: Colors.transparent,
       textTheme: GoogleFonts.stylishTextTheme().copyWith(
         bodyLarge: GoogleFonts.stylishTextTheme().bodyLarge?.copyWith(
-              color: AppColors.lightWhite,
+              color: AppColors.blackGrey,
             ),
         bodyMedium: GoogleFonts.stylishTextTheme().bodyMedium?.copyWith(
-              color: AppColors.lightWhite,
+              color: AppColors.blackGrey,
             ),
         bodySmall: GoogleFonts.stylishTextTheme().bodySmall?.copyWith(
-              color: AppColors.lightWhite,
+              color: AppColors.blackGrey,
             ),
       ),
       appBarTheme: const AppBarTheme().copyWith(
         surfaceTintColor: Colors.transparent,
-        color: AppColors.blacSurface,
+        color: Colors.white,
       ),
       cardTheme: const CardTheme().copyWith(
-        color: AppColors.blackGrey,
+        color: AppColors.easyGrey,
         surfaceTintColor: Colors.transparent,
       ),
       listTileTheme: const ListTileThemeData().copyWith(
-        tileColor: AppColors.lightGrey,
+        tileColor: AppColors.lightWhite,
       ),
     );

@@ -1,6 +1,6 @@
-import '../../entities/quiz/quiz.dart';
-import '../../repositories/quiz_repository.dart';
-import 'save_quiz.dart';
+import 'package:quizzylite/domain/entities/quiz.dart';
+import 'package:quizzylite/domain/repositories/quiz_repository.dart';
+import 'package:quizzylite/domain/usecases/save_quiz/save_quiz.dart';
 
 class SaveQuizImpl extends SaveQuizUseCase {
   SaveQuizImpl(this.quizRepository);

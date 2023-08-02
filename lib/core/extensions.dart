@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../../../core/constants/app_colors.dart';
+import 'package:quizzylite/core/core.dart';
 
 extension ScaffoldMessengerStateUtils on ScaffoldMessengerState {
   void toast(String message) {

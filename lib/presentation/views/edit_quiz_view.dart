@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:quizzylite/core/extensions.dart';
+import 'package:quizzylite/domain/entities/quiz.dart';
+import 'package:quizzylite/presentation/module.dart';
 import 'package:shortid/shortid.dart';
 import 'package:translator/translator.dart';
-
-import '../../domain/entities/quiz/quiz.dart';
-import '../viewmodel/module.dart';
-import '../widgets/extensions/extensions.dart';
 
 class EditQuizView extends ConsumerStatefulWidget {
   const EditQuizView({super.key, this.quizId});
@@ -24,7 +23,7 @@ class _EditQuizViewState extends ConsumerState<EditQuizView> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final translator = GoogleTranslator();
 
-  late final model = ref.read(quizListModel);
+  late final model = ref.read(quizModel);
 
   @override
   void dispose() {
@@ -60,8 +59,7 @@ class _EditQuizViewState extends ConsumerState<EditQuizView> {
         child: Column(
           children: [
             Container(
-              margin:
-                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
+              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
               child: TextFormField(
                 controller: _wordController,
                 validator: isCorrectInput,
@@ -70,17 +68,14 @@ class _EditQuizViewState extends ConsumerState<EditQuizView> {
                 ),
               ),
             ),
-            const SizedBox(height: 15.0),
+            const SizedBox(height: 15),
             ElevatedButton(
               onPressed: () async {
                 if (_wordController.text.isEmpty) {
                   return;
                 }
                 await translator
-                    .translate(
-                  _wordController.text,
-                  to: 'ru',
-                )
+                    .translate(_wordController.text, to: 'ru')
                     .then((translatedWord) {
                   if (translatedWord.text == _wordController.text) {
                     messenger.toast("Couldn't Found Translate");
@@ -92,8 +87,10 @@ class _EditQuizViewState extends ConsumerState<EditQuizView> {
               child: const Text('Translate'),
             ),
             Container(
-              margin:
-                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
+              margin: const EdgeInsets.symmetric(
+                horizontal: 20,
+                vertical: 5,
+              ),
               child: TextFormField(
                 controller: _conceptController,
                 validator: isCorrectInput,
@@ -111,7 +108,7 @@ class _EditQuizViewState extends ConsumerState<EditQuizView> {
           if (_formKey.currentState!.validate()) {
             _formKey.currentState!.save();
             if (isNewQuiz) {
-              Quiz newQuiz = Quiz(
+              final newQuiz = Quiz(
                 id: shortid.generate(),
                 word: _wordController.text,
                 concept: _conceptController.text,
@@ -122,10 +119,12 @@ class _EditQuizViewState extends ConsumerState<EditQuizView> {
             } else {
               model.get(widget.quizId!).then((qz) {
                 if (qz != null) {
-                  model.save(qz.copyWith(
-                    word: _wordController.text,
-                    concept: _conceptController.text,
-                  ));
+                  model.save(
+                    qz.copyWith(
+                      word: _wordController.text,
+                      concept: _conceptController.text,
+                    ),
+                  );
                 }
               });
             }

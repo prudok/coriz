@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "588682336605",
+    "project_id": "coriz-d770d",
+    "storage_bucket": "coriz-d770d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:588682336605:android:47a97b2267bdbe9b8c30b4",
+        "android_client_info": {
+          "package_name": "com.onatcipli.networkUpp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "588682336605-37j55kd4qnohiol05j7h1e8edo50vf1i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8Ar6XuIJoWcY24MADpzcB9K6DUic3R5k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "588682336605-37j55kd4qnohiol05j7h1e8edo50vf1i.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "588682336605-0noo40tbpjmpbg4s4f6lkpqnhkre4udi.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.onatcipli.networkUpp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

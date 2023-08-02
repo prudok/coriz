@@ -23,5 +23,5 @@ void main() => runZonedGuarded(
             );
         runApp(const ProviderScope(child: QuizzLite()));
       },
-      errorHandler.send,
+      errorHandler.send
     );

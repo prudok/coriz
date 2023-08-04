@@ -4,6 +4,7 @@ import 'package:flutter_swiper_view/flutter_swiper_view.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:quizzylite/core/core.dart';
 import 'package:quizzylite/domain/entities/quiz.dart';
+import 'package:quizzylite/generated/l10n.dart';
 import 'package:quizzylite/presentation/module.dart';
 import 'package:quizzylite/presentation/widgets/widgets.dart';
 
@@ -28,7 +29,7 @@ class _QuizCardsViewState extends ConsumerState<QuizCardsView> {
 
   @override
   Widget build(BuildContext context) {
-    const noQuizTitle = 'Add At Least One Card';
+    final noQuizTitle = S.of(context).addAtLeastOneCard;
     final messenger = ScaffoldMessenger.of(context);
     final model = ref.watch(quizModel);
     final quizzesListState = ref.watch(quizState);
@@ -36,7 +37,7 @@ class _QuizCardsViewState extends ConsumerState<QuizCardsView> {
         quizzesListState.quizList.where((quiz) => quiz.isFavorite).toList();
     return Center(
       child: quizList.isEmpty
-          ? const NoDataNotify(
+          ? NoDataNotify(
               gifPath: AssetPaths.thinkingDogPath,
               title: noQuizTitle,
             )
@@ -106,7 +107,7 @@ class CardStack extends StatelessWidget {
                 isFavorite: false,
               ),
             );
-            messenger.toast('Word Learned!');
+            messenger.toast(S.of(context).wordLearned);
           },
           child: QuizCard(quiz: quizzesList[index]),
         );

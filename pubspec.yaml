@@ -25,6 +25,9 @@ dependencies:
   collection: ^1.17.1
   firebase_crashlytics: ^3.3.4
   firebase_core: ^2.15.0
+  flutter_localizations:
+    sdk: flutter
+  intl: any
 
 dev_dependencies:
   flutter_test:
@@ -47,3 +50,5 @@ flutter:
     - assets/gifs/i_know_answer.gif
     - assets/gifs/thinkingDog.gif
     - assets/gifs/click.gif
+flutter_intl:
+  enabled: true

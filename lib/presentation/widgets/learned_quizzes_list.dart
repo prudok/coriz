@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quizzylite/core/app_text_styles.dart';
 import 'package:quizzylite/core/asset_paths.dart';
+import 'package:quizzylite/generated/l10n.dart';
 import 'package:quizzylite/presentation/module.dart';
 import 'package:quizzylite/presentation/widgets/gif_widget.dart';
 import 'package:quizzylite/presentation/widgets/quiz_tile.dart';
@@ -11,12 +12,12 @@ class LearnedQuizzesList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    const noQuizTitle = 'No Quizzes Learned';
+    final noQuizTitle = S.of(context).noNewQuizzes;
     final quizListState = ref.watch(quizState);
     final quizList = quizListState.quizList.where((q) => q.isLearned).toList();
 
     return quizList.isEmpty
-        ? const NoDataNotify(
+        ? NoDataNotify(
             gifPath: AssetPaths.iKnowAnswerPath,
             title: noQuizTitle,
           )
@@ -33,7 +34,7 @@ class LearnedQuizzesList extends ConsumerWidget {
                           vertical: 10,
                         ),
                         child: Text(
-                          'Learned',
+                          S.of(context).learned,
                           style: AppTextStyles.titleMedium.copyWith(
                             color: Colors.green,
                             fontWeight: FontWeight.bold,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quizzylite/core/core.dart';
+import 'package:quizzylite/generated/l10n.dart';
 import 'package:quizzylite/presentation/module.dart';
 import 'package:quizzylite/presentation/widgets/widgets.dart';
 
@@ -9,14 +10,14 @@ class NewQuizzesList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    const noQuizTitle = 'No New Quizzes';
+    final noQuizTitle = S.of(context).noNewQuizzes;
     final quizzesListState = ref.watch(quizState);
     final quizzesList = quizzesListState.quizList
         .where((quiz) => quiz.isLearned == false)
         .toList();
 
     return quizzesList.isEmpty
-        ? const NoDataNotify(
+        ? NoDataNotify(
             gifPath: AssetPaths.sleepingWithPillowPath,
             title: noQuizTitle,
           )
@@ -33,7 +34,7 @@ class NewQuizzesList extends ConsumerWidget {
                           vertical: 10,
                         ),
                         child: Text(
-                          'New',
+                          S.of(context).newWord,
                           style: AppTextStyles.titleMedium.copyWith(
                             color: Colors.grey,
                             fontWeight: FontWeight.bold,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quizzylite/core/core.dart';
+import 'package:quizzylite/generated/l10n.dart';
 import 'package:quizzylite/presentation/views/edit_quiz_view.dart';
 import 'package:quizzylite/presentation/widgets/widgets.dart';
 
@@ -15,16 +16,16 @@ class DictionaryView extends ConsumerWidget {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Dictionary'),
+          title: Text(S.of(context).dictionary),
           centerTitle: true,
-          bottom: const TabBar(
+          bottom: TabBar(
             indicatorColor: AppColors.primary,
             unselectedLabelColor: Colors.grey,
             labelColor: AppColors.primary,
             tabs: [
-              Text('Favorites', style: AppTextStyles.bodyLarge),
-              Text('New', style: AppTextStyles.bodyLarge),
-              Text('Learned', style: AppTextStyles.bodyLarge),
+              Text(S.of(context).favorites, style: AppTextStyles.bodyLarge),
+              Text(S.of(context).newWord, style: AppTextStyles.bodyLarge),
+              Text(S.of(context).learned, style: AppTextStyles.bodyLarge),
             ],
           ),
         ),

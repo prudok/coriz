@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quizzylite/core/app_text_styles.dart';
+import 'package:quizzylite/generated/l10n.dart';
 import 'package:quizzylite/presentation/views/about_app_view.dart';
 import 'package:quizzylite/presentation/views/terms_of_use.dart';
 
@@ -11,16 +12,16 @@ class SettingsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Column(
         children: [
-          OptionTile(
-            title: 'Terms Of Use',
+          _OptionTile(
+            title: S.of(context).termsOfUse,
             icon: Icons.info_outline,
             path: TermsOfUseView.routeName,
           ),
-          OptionTile(
-            title: 'About Project',
+          _OptionTile(
+            title: S.of(context).aboutProject,
             icon: Icons.info,
             path: AboutAppView.routeName,
           ),
@@ -30,11 +31,10 @@ class SettingsView extends StatelessWidget {
   }
 }
 
-class OptionTile extends StatelessWidget {
-  const OptionTile({
+class _OptionTile extends StatelessWidget {
+  const _OptionTile({
     required this.title,
     required this.path,
-    super.key,
     this.icon,
   });
 

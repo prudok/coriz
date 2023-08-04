@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:quizzylite/core/app_colors.dart';
 import 'package:quizzylite/core/app_text_styles.dart';
 import 'package:quizzylite/domain/entities/quiz.dart';
+import 'package:quizzylite/generated/l10n.dart';
 import 'package:quizzylite/presentation/module.dart';
 import 'package:quizzylite/presentation/views/edit_quiz_view.dart';
 
@@ -41,7 +42,7 @@ class QuizTile extends ConsumerWidget {
                   showDialog<void>(
                     context: context,
                     builder: (context) {
-                      return DeletingDialog(model: model, quiz: quiz);
+                      return _DeletingDialog(model: model, quiz: quiz);
                     },
                   );
                 },
@@ -72,11 +73,10 @@ class QuizTile extends ConsumerWidget {
   }
 }
 
-class DeletingDialog extends StatelessWidget {
-  const DeletingDialog({
+class _DeletingDialog extends StatelessWidget {
+  const _DeletingDialog({
     required this.model,
     required this.quiz,
-    super.key,
   });
 
   final QuizzesStateNotifier model;
@@ -85,24 +85,24 @@ class DeletingDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text(
-        'Are you sure?',
-        style: TextStyle(color: AppColors.primary),
+      title: Text(
+        S.of(context).areYouSure,
+        style: const TextStyle(color: AppColors.primary),
       ),
-      content: const Text('Do you want to delete this word?'),
+      content: Text(S.of(context).doUWantDeleteWord),
       actions: [
         TextButton(
           onPressed: () {
             Navigator.of(context).pop();
           },
-          child: const Text('Cancel'),
+          child: Text(S.of(context).cancel),
         ),
         TextButton(
           onPressed: () {
             Navigator.of(context).pop();
             model.delete(quiz.id);
           },
-          child: const Text('Delete'),
+          child: Text(S.of(context).delete),
         )
       ],
     );

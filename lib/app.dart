@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:quizzylite/config/routes/router.dart';
-import 'package:quizzylite/config/themes/themes.dart';
+import 'package:quizzylite/config/config.dart';
+import 'package:quizzylite/generated/l10n.dart';
 
 class QuizzLite extends ConsumerWidget {
   const QuizzLite({super.key});
@@ -13,6 +14,13 @@ class QuizzLite extends ConsumerWidget {
       debugShowCheckedModeBanner: false,
       theme: lightAmberTheme(),
       darkTheme: darkAmberTheme(),
+      localizationsDelegates: const [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: S.delegate.supportedLocales,
     );
   }
 }

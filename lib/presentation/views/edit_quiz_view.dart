@@ -3,13 +3,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quizzylite/core/extensions.dart';
 import 'package:quizzylite/domain/entities/quiz.dart';
+import 'package:quizzylite/generated/l10n.dart';
 import 'package:quizzylite/presentation/module.dart';
 import 'package:shortid/shortid.dart';
 import 'package:translator/translator.dart';
 
 class EditQuizView extends ConsumerStatefulWidget {
   const EditQuizView({super.key, this.quizId});
-
   static const routeName = '/edit';
   final String? quizId;
 
@@ -22,20 +22,11 @@ class _EditQuizViewState extends ConsumerState<EditQuizView> {
   final TextEditingController _conceptController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final translator = GoogleTranslator();
-
   late final model = ref.read(quizModel);
-
-  @override
-  void dispose() {
-    _wordController.dispose();
-    _conceptController.dispose();
-    super.dispose();
-  }
 
   @override
   void initState() {
     super.initState();
-
     if (widget.quizId != null) {
       model.get(widget.quizId!).then((qz) {
         if (qz != null) {
@@ -47,12 +38,19 @@ class _EditQuizViewState extends ConsumerState<EditQuizView> {
   }
 
   @override
+  void dispose() {
+    _wordController.dispose();
+    _conceptController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final messenger = ScaffoldMessenger.of(context);
     final isNewQuiz = widget.quizId == null;
     return Scaffold(
       appBar: AppBar(
-        title: Text(isNewQuiz ? 'New Quiz!' : 'Edit Quiz'),
+        title: Text(isNewQuiz ? S.of(context).newQuiz : S.of(context).editQuiz),
       ),
       body: Form(
         key: _formKey,
@@ -62,9 +60,11 @@ class _EditQuizViewState extends ConsumerState<EditQuizView> {
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
               child: TextFormField(
                 controller: _wordController,
-                validator: isCorrectInput,
+                validator: _isCorrectInput,
                 decoration: InputDecoration(
-                  hintText: isNewQuiz ? 'Enter new word' : 'Enter edited word',
+                  hintText: isNewQuiz
+                      ? S.of(context).enterNewWord
+                      : S.of(context).enterEditedWord,
                 ),
               ),
             ),
@@ -78,13 +78,13 @@ class _EditQuizViewState extends ConsumerState<EditQuizView> {
                     .translate(_wordController.text)
                     .then((translatedWord) {
                   if (translatedWord.text == _wordController.text) {
-                    messenger.toast("Couldn't Found Translate");
+                    messenger.toast(S.of(context).couldntFoundTranslate);
                   } else {
                     _conceptController.text = translatedWord.text;
                   }
                 });
               },
-              child: const Text('Translate into Russian'),
+              child: Text(S.of(context).translateIntoRussian),
             ),
             Container(
               margin: const EdgeInsets.symmetric(
@@ -93,10 +93,11 @@ class _EditQuizViewState extends ConsumerState<EditQuizView> {
               ),
               child: TextFormField(
                 controller: _conceptController,
-                validator: isCorrectInput,
+                validator: _isCorrectInput,
                 decoration: InputDecoration(
-                  hintText:
-                      isNewQuiz ? 'Enter new concept' : 'Enter edited concept',
+                  hintText: isNewQuiz
+                      ? S.of(context).enterNewConcept
+                      : S.of(context).enterEditedConcept,
                 ),
               ),
             ),
@@ -138,9 +139,9 @@ class _EditQuizViewState extends ConsumerState<EditQuizView> {
     );
   }
 
-  String? isCorrectInput(String? value) {
+  String? _isCorrectInput(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Please, fill the form.';
+      return S.of(context).pleaseFillTheForm;
     } else {
       return null;
     }

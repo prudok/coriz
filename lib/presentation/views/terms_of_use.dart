@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizzylite/core/app_text_styles.dart';
+import 'package:quizzylite/generated/l10n.dart';
 
 class TermsOfUseView extends StatelessWidget {
   const TermsOfUseView({super.key});
@@ -10,24 +11,33 @@ class TermsOfUseView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Terms of Use'),
+        title: Text(S.of(context).termsOfUse),
       ),
-      body: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Center(
               child: Text(
-                'To Add New Quiz Card:',
+                S.of(context).toAddNewQuizCard,
                 style: AppTextStyles.titleMedium,
               ),
             ),
-            Text("1. Click On 'Add' Button", style: AppTextStyles.bodyLarge),
-            Text('2. Fill The Form', style: AppTextStyles.bodyLarge),
-            Text('3. Star Your New Quiz Card', style: AppTextStyles.bodyLarge),
             Text(
-              '4. Double Click On Quiz Card To See Concept',
+              S.of(context).firstClickOnAddButton,
+              style: AppTextStyles.bodyLarge,
+            ),
+            Text(
+              S.of(context).secondFillTheForm,
+              style: AppTextStyles.bodyLarge,
+            ),
+            Text(
+              S.of(context).thirdStarYourNewQuizCard,
+              style: AppTextStyles.bodyLarge,
+            ),
+            Text(
+              S.of(context).fourthDoubleClickOnCard,
               style: AppTextStyles.bodyLarge,
             ),
           ],

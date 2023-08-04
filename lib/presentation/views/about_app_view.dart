@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:quizzylite/core/app_text_styles.dart';
+import 'package:quizzylite/generated/l10n.dart';
 
 class AboutAppView extends StatelessWidget {
   const AboutAppView({super.key});
@@ -12,37 +13,33 @@ class AboutAppView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('About App'),
+        title: Text(S.of(context).aboutApp),
       ),
-      body: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Center(
               child: Text(
-                'Coriz',
+                S.of(context).coriz,
                 style: AppTextStyles.titleMedium,
               ),
             ),
             Text(
-              'If you have any suggestions how to improve this app, please write to:\n coriz_team@internet.ru',
+              S.of(context).writeYourSuggestions,
               style: AppTextStyles.bodyLarge,
             ),
             Text(
-              'Star or open an issue on Github.com:\n https://github.com/rel1nce/coriz',
+              S.of(context).starOrOpenIssueOnGithub,
               style: AppTextStyles.bodyLarge,
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             Text(
-              'This is an open source project, any kind of help to improve the App will be appreciated.',
+              S.of(context).OpenSource,
               style: AppTextStyles.bodySmall,
             ),
-            SizedBox(height: 10),
-            Text(
-              "Currently there's only auto-russian translate function, new languages'll be add in future.",
-              style: AppTextStyles.bodySmall,
-            ),
+            const SizedBox(height: 10),
           ],
         ),
       ),

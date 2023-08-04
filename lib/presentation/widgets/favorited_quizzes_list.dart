@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quizzylite/core/core.dart';
+import 'package:quizzylite/generated/l10n.dart';
 import 'package:quizzylite/presentation/module.dart';
 import 'package:quizzylite/presentation/widgets/widgets.dart';
 
@@ -9,13 +10,13 @@ class FavoritedQuizzesList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    const noQuizTitle = 'No Quizzes Added';
+    final noQuizTitle = S.of(context).noQuizzesAdded;
     final quizzesListState = ref.watch(quizState);
     final quizzesList =
         quizzesListState.quizList.where((quiz) => quiz.isFavorite).toList();
 
     return quizzesList.isEmpty
-        ? const NoDataNotify(
+        ? NoDataNotify(
             gifPath: AssetPaths.chillRelaxPath,
             title: noQuizTitle,
           )
@@ -32,7 +33,7 @@ class FavoritedQuizzesList extends ConsumerWidget {
                           vertical: 10,
                         ),
                         child: Text(
-                          'Favorite',
+                          S.of(context).favorites,
                           style: AppTextStyles.titleMedium.copyWith(
                             color: AppColors.primary,
                             fontWeight: FontWeight.bold,

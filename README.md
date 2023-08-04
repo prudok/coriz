@@ -1,4 +1,10 @@
 # Coriz
+![GitHub](https://img.shields.io/github/license/rel1nce/coriz) ![GitHub issues](https://img.shields.io/github/issues/rel1nce/coriz) ![GitHub Repo stars](https://img.shields.io/github/stars/rel1nce/coriz) ![GitHub forks](https://img.shields.io/github/forks/rel1nce/coriz) 
+
+
+
+
+
 ## Introduction
 ### What is a quiz app?
 You create a quiz and give it a name. Then you can add questions and their answers to the quiz. When you're done you can take the quiz in normal or random order. You can also share the quiz with others. This is very useful for learning languages or other school subjects!

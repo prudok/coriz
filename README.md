@@ -23,6 +23,10 @@ Coriz allows you to add, change and memorize new words with the help of quiz car
 - Google translate api with [translator](https://pub.dev/packages/translator)
 - [card_swiper](https://pub.dev/packages/card_swiper), [percent_indicator](https://pub.dev/packages/percent_indicator)
 - [build_runner](https://pub.dev/packages/build_runner)
+- [firebase_core](https://pub.dev/packages/firebase_core) and [firebase_analytics](https://pub.dev/packages/firebase_analytics) to get crash logs
+
+## Markets
+  - [RuStore](https://apps.rustore.ru/app/com.onatcipli.networkUpp)
 
 # Overview
 ## Dark Theme
@@ -42,6 +46,7 @@ Coriz allows you to add, change and memorize new words with the help of quiz car
 | Settings Menu | Terms Of Use |
 |-----------|---------------|
 |<img src="https://user-images.githubusercontent.com/101862863/230761975-50caf836-b804-4410-a3d3-e8d1411f2715.png" width="250">|<img src="https://user-images.githubusercontent.com/101862863/230761976-8be3ed0e-e233-445a-950f-dbb2fffcf187.png" width="250">|
+
 
 
 

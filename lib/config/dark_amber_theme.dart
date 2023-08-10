@@ -8,7 +8,7 @@ final _darkAmberColorScheme = ColorScheme.fromSeed(
 );
 
 ThemeData darkAmberTheme = ThemeData.dark(useMaterial3: true).copyWith(
-  colorScheme: darkAmberColorScheme,
+  colorScheme: _darkAmberColorScheme,
   splashColor: Colors.transparent,
   highlightColor: Colors.transparent,
   shadowColor: Colors.transparent,

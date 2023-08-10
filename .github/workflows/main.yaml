@@ -1,11 +1,11 @@
-name: Main Branch Workflow
+name: Main branch workflow
 on:
   pull_request:
     branches:
       - main
 jobs:
   flutter_test:
-    name: Run Flutter Analyze
+    name: Run Flutter analyze
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -14,8 +14,7 @@ jobs:
           java-version: "12.x"
       - uses: subosito/flutter-action@v1
         with:
-          channel: 'stable'
-          cache: true
+          channel: "stable"
       - run: flutter pub get
       - run: flutter pub run build_runner build
       - run: flutter analyze

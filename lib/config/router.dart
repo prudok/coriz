@@ -9,23 +9,23 @@ final GoRouter router = GoRouter(
   routes: <RouteBase>[
     GoRoute(
       path: HomeView.routeName,
-      builder: (context, state) => const HomeView(),
+      builder: (_, __) => const HomeView(),
     ),
     GoRoute(
       path: EditQuizView.routeName,
-      builder: (context, state) => const EditQuizView(),
+      builder: (_, __) => const EditQuizView(),
     ),
     GoRoute(
       path: '${EditQuizView.routeName}:id',
-      builder: (context, state) => EditQuizView(quizId: state.params['id']),
+      builder: (_, state) => EditQuizView(quizId: state.params['id']),
     ),
     GoRoute(
       path: AboutAppView.routeName,
-      builder: (context, state) => const AboutAppView(),
+      builder: (_, __) => const AboutAppView(),
     ),
     GoRoute(
       path: TermsOfUseView.routeName,
-      builder: (context, state) => const TermsOfUseView(),
+      builder: (_, __) => const TermsOfUseView(),
     ),
   ],
 );

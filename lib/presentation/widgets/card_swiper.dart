@@ -48,7 +48,7 @@ class _QuizCardsViewState extends ConsumerState<QuizCardsView> {
                   quizzesList: quizList,
                   favoritedListLenght: favoritedListLenght,
                 ),
-                CardStack(
+                _CardStack(
                   model: model,
                   quizzesList: quizList,
                   messenger: messenger,
@@ -81,12 +81,11 @@ class _FavoriteIndicator extends StatelessWidget {
   }
 }
 
-class CardStack extends StatelessWidget {
-  const CardStack({
+class _CardStack extends StatelessWidget {
+  const _CardStack({
     required this.model,
     required this.quizzesList,
     required this.messenger,
-    super.key,
   });
 
   final QuizzesStateNotifier model;

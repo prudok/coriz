@@ -12,8 +12,8 @@ class QuizzLite extends ConsumerWidget {
     return MaterialApp.router(
       routerConfig: router,
       debugShowCheckedModeBanner: false,
-      theme: lightAmberTheme(),
-      darkTheme: darkAmberTheme(),
+      theme: lightAmberTheme,
+      darkTheme: darkAmberTheme,
       localizationsDelegates: const [
         S.delegate,
         GlobalMaterialLocalizations.delegate,

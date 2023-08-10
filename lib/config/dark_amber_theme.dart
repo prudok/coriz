@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quizzylite/core/core.dart';
 
-final darkAmberColorScheme = ColorScheme.fromSeed(
+final _darkAmberColorScheme = ColorScheme.fromSeed(
   seedColor: AppColors.primary,
   brightness: Brightness.dark,
 );
 
 ThemeData darkAmberTheme = ThemeData.dark(useMaterial3: true).copyWith(
-  colorScheme: darkAmberColorScheme,
+  colorScheme: _darkAmberColorScheme,
   splashColor: Colors.transparent,
   highlightColor: Colors.transparent,
   shadowColor: Colors.transparent,

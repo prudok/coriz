@@ -1,6 +1,6 @@
 name: Release Branch Workflow
 on:
-  pull_request:
+  push:
     branches:
       - release
 jobs:

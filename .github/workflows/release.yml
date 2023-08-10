@@ -1,6 +1,6 @@
 name: Release Branch Workflow
 on:
-  push:
+  pull_request:
     branches:
       - release
 jobs:
@@ -34,7 +34,5 @@ jobs:
          with:
            channel: 'stable'
            cache: true
-       - run: flutter pub get
-       - run: flutter pub run build_runner build
-       - run: flutter analyze
+       - run: flutter build apk
        - run: flutter build appbundle

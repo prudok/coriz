@@ -43,6 +43,44 @@ Coriz allows you to add, change and memorize new words with the help of quiz car
 |-----------|---------------|
 |<img src="https://user-images.githubusercontent.com/101862863/230761975-50caf836-b804-4410-a3d3-e8d1411f2715.png" width="250">|<img src="https://user-images.githubusercontent.com/101862863/230761976-8be3ed0e-e233-445a-950f-dbb2fffcf187.png" width="250">|
 
+## Installation
+
+1. Install [Flutter SDK](https://flutter.dev/docs/get-started/install) on your computer.
+2. Clone this repository using the command:
+
+   
+```shell
+   git clone https://github.com/rel1nce/university_io.git
+   ```
+3. Navigate to the project folder:
+   
+```shell
+   cd university_io
+  ``` 
+4. Run the application:
+
+   
+```shell
+   flutter run
+   ```
+## Contributing to the Project
+
+If you want to contribute to the development of this project, follow these steps:
+
+1. Fork this repository.
+2. Create your own development branch:
+
+   
+```shell
+   git checkout -b your-branch
+   ```
+3. Make the necessary code changes.
+4. Check your changes:
+
+   
+```shell
+   flutter analyze
+   ```
 
 
 

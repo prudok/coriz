@@ -4,18 +4,6 @@ on:
     branches:
       - release
 jobs:
-  flutter_build_apk:
-    name: Run Building Apk
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: subosito/flutter-action@v2
-        with:
-          channel: 'stable'
-          cache: true
-      - run: flutter pub get
-      - run: flutter pub run build_runner build --delete-conflicting-outputs
-      - run: flutter build appbundle
   telegram_bot:
     runs-on: ubuntu-latest
     steps:
@@ -32,5 +20,6 @@ jobs:
         with:
           to: ${{ secrets.TGCHANNELID }}
           token: ${{ secrets.TGBOTID }}
-          message: New APK is available!
+          message: | 
+            New APK is available! Version: 1.0.${{ github.run_id }}
           document: ./build/app/outputs/apk/release/app-release.apk

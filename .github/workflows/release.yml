@@ -9,10 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-java@v3
-        with:
-          java-version: "12.x"
-          cache: 'gradle'
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
@@ -27,12 +23,14 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
+      - run: flutter pub get
+      - run: flutter pub run build_runner build --delete-conflicting-outputs
       - name: Build APK
         run: flutter build apk
       - name: Send APK to Telegram
         uses: appleboy/telegram-action@master
         with:
-          to: secrets.TGCHANNELID
-          token: secrets.TGBOTID
+          to: ${{ secrets.TGCHANNELID }}
+          token: ${{ secrets.TGBOTID }}
           message: New APK is available!
           document: ./build/app/outputs/apk/release/app-release.apk

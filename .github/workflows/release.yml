@@ -4,52 +4,36 @@ on:
     branches:
       - release
 jobs:
-  flutter_test:
-    name: Run Flutter Analyze
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v1
-        with:
-          java-version: "12.x"
-          cache: 'gradle'
-      - uses: subosito/flutter-action@v1
-        with:
-          channel: 'stable'
-          cache: true
-      - run: flutter pub get
-      - run: flutter pub run build_runner build --delete-conflicting-outputs
-      - run: flutter analyze
-  flutter_build_apk:
-    name: Run Building Apk
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v1
-        with:
-          java-version: "12.x"
-          cache: 'gradle'
-      - uses: subosito/flutter-action@v1
-        with:
-          channel: 'stable'
-          cache: true
-      - run: flutter pub get
-      - run: flutter pub run build_runner build --delete-conflicting-outputs
-      - run: flutter analyze
-      - run: flutter build appbundle
   telegram_bot:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - name: Setup Flutter
-        uses: subosito/flutter-action@v1.2.0
+        uses: subosito/flutter-action@v2
+      - run: flutter pub get
+      - run: flutter pub run build_runner build --delete-conflicting-outputs
+
       - name: Build APK
         run: flutter build apk
+
+      - name: Check Successful Builds
+        id: build-status
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
+        run: |
+          successful_builds=$(gh api --header 'Accept: application/vnd.github+json' --method GET https://api.github.com/repos/rel1nce/coriz/actions/runs?status=success | jq '.total_count')
+          echo "Successful Builds: $successful_builds"
+          echo "successful_builds=${successful_builds}" >> $GITHUB_OUTPUT
+
       - name: Send APK to Telegram
         uses: appleboy/telegram-action@master
         with:
-        to: secrets.TGCHANNELID
-        token: secrets.TGBOTID
-        message: New APK is available!
-        document: ./build/app/outputs/apk/release/app-release.apk
+          to: ${{ secrets.TGCHANNELID }}
+          token: ${{ secrets.TGBOTID }}
+          message: |
+            Successful build number: ${{ steps.build-status.outputs.successful_builds }}
+          document: ./build/app/outputs/apk/release/app-release.apk

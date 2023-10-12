@@ -33,4 +33,4 @@ jobs:
           to: ${{ secrets.TGCHANNELID }}
           token: ${{ secrets.TGBOTID }}
           message: |
-            New APK is available! Final version: ${{ steps.build-status.outputs.FLAVOR }} ${{ steps.build-status.outputs.VERSION}}--build_number=${{ steps.build-status.outputs.SUCCESSFUL_BUILDS }}
+            New APK is available! Version: ${{ steps.build-status.outputs.FLAVOR }} ${{ steps.build-status.outputs.VERSION}}--build_number=${{ steps.build-status.outputs.SUCCESSFUL_BUILDS }}

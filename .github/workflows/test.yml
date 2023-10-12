@@ -20,8 +20,8 @@ jobs:
         run: |
           FLAVOR=$( echo ${{ github.ref_name }} | cut -d '/' -f 1)
           VERSION=$( echo ${{ github.ref_name }} | cut -d '/' -f 2)
-          SUCCESSFUL_RELEASE_BUILDS=$( gh api --header 'Accept: application/vnd.github+json' --method GET https://api.github.com/repos/rel1nce/coriz/actions/workflows/release.yml/runs?branch=release/$VERSION&status=success | jq '.total_count' )
-          SUCCESSFUL_TEST_BUILDS=$( gh api --header 'Accept: application/vnd.github+json' --method GET https://api.github.com/repos/rel1nce/coriz/actions/workflows/release.yml/runs?branch=test/$VERSION&status=success | jq '.total_count' )
+          SUCCESSFUL_RELEASE_BUILDS=$( gh api --header 'Accept: application/vnd.github+json' --method GET https://api.github.com/repos/rel1nce/coriz/actions/workflows/release.yml/runs?branch=release/$VERSION&status=success | jq -r '.total_count' )
+          SUCCESSFUL_TEST_BUILDS=$( gh api --header 'Accept: application/vnd.github+json' --method GET https://api.github.com/repos/rel1nce/coriz/actions/workflows/release.yml/runs?branch=test/$VERSION&status=success | jq -r '.total_count' )
           SUCCESSFUL_BUILDS=$(( $SUCCESSFUL_RELEASE_BUILDS  + $SUCCESSFUL_TEST_BUILDS ))
           echo "SUCCESSFUL_BUILDS=${SUCCESSFUL_BUILDS}" >> $GITHUB_OUTPUT
           echo "FLAVOR=${FLAVOR}" >> $GITHUB_OUTPUT
@@ -33,4 +33,4 @@ jobs:
           to: ${{ secrets.TGCHANNELID }}
           token: ${{ secrets.TGBOTID }}
           message: |
-            New APK is available! Version: ${{ steps.build-status.outputs.FLAVOR }} {{ steps.build-status.outputs.VERSION }}--build_number=${{ steps.build-status.outputs.SUCCESSFUL_BUILDS }}
+            New APK is available! Final version: ${{ steps.build-status.outputs.FLAVOR }} {{ steps.build-status.outputs.VERSION }}--build_number=${{ steps.build-status.outputs.SUCCESSFUL_BUILDS }}

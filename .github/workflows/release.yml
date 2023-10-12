@@ -2,7 +2,7 @@ name: Release Workflow
 on:
   push:
     branches:
-      - 'release/**'
+      - 'releases/**'
       - 'test/**'
 jobs:
   telegram_bot:

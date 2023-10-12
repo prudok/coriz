@@ -2,7 +2,8 @@ name: Release Workflow
 on:
   push:
     branches:
-      - release
+      - 'release/**'
+      - 'test/**'
 jobs:
   telegram_bot:
     runs-on: ubuntu-latest
@@ -39,5 +40,5 @@ jobs:
           to: ${{ secrets.TGCHANNELID }}
           token: ${{ secrets.TGBOTID }}
           message: |
-            New APK is available! Version: ${{ steps.build-status.outputs.FLAVOR }} {{ steps.build-status.outputs.VERSION }}+build_ ${{ steps.build-status.outputs.SUCCESSFUL_BUILDS }}
+            New APK is available! Version: ${{ steps.build-status.outputs.FLAVOR }} {{ steps.build-status.outputs.VERSION }}+build_${{ steps.build-status.outputs.SUCCESSFUL_BUILDS }}
           document: ./build/app/outputs/apk/release/app-release.apk

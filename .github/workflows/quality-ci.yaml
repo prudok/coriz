@@ -1,0 +1,21 @@
+name: Flutter lint
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install FVM
+        run: |
+          dart global activate fvm
+          fvm install
+          fvm use
+          fvm pub get
+      - name: Analyze code
+        run: fvm analyze

@@ -23,7 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "OpenSource": MessageLookupByLibrary.simpleMessage(
-            "This is an open source project, any kind of help to improve the App will be appreciated."),
+            "This is an open source project, any kind of help to improve the App will be appreciated.",),
         "aboutApp": MessageLookupByLibrary.simpleMessage("About App"),
         "aboutProject": MessageLookupByLibrary.simpleMessage("About Project"),
         "addAtLeastOneCard":
@@ -36,7 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
         "dictionary": MessageLookupByLibrary.simpleMessage("Dictionary"),
         "doUWantDeleteWord": MessageLookupByLibrary.simpleMessage(
-            "Do you want to delete this word?"),
+            "Do you want to delete this word?",),
         "editQuiz": MessageLookupByLibrary.simpleMessage("Edit Quiz"),
         "enterEditedConcept":
             MessageLookupByLibrary.simpleMessage("Enter edited concept"),
@@ -49,7 +49,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "firstClickOnAddButton":
             MessageLookupByLibrary.simpleMessage("1. Click On \'Add\' Button"),
         "fourthDoubleClickOnCard": MessageLookupByLibrary.simpleMessage(
-            "4. Double Click On Quiz Card To See Concept"),
+            "4. Double Click On Quiz Card To See Concept",),
         "learned": MessageLookupByLibrary.simpleMessage("Learned"),
         "newQuiz": MessageLookupByLibrary.simpleMessage("New Quiz!"),
         "newWord": MessageLookupByLibrary.simpleMessage("New"),
@@ -63,7 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("2. Fill The Form"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "starOrOpenIssueOnGithub": MessageLookupByLibrary.simpleMessage(
-            "Star or open an issue on Github.com:\n https://github.com/rel1nce/coriz"),
+            "Star or open an issue on Github.com:\n https://github.com/rel1nce/coriz",),
         "termsOfUse": MessageLookupByLibrary.simpleMessage("Terms Of Use"),
         "thirdStarYourNewQuizCard":
             MessageLookupByLibrary.simpleMessage("3. Star Your New Quiz Card"),
@@ -73,6 +73,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Translate into Russian"),
         "wordLearned": MessageLookupByLibrary.simpleMessage("Word Learned!"),
         "writeYourSuggestions": MessageLookupByLibrary.simpleMessage(
-            "If you have any suggestions how to improve this app, please write to:\n coriz_team@internet.ru")
+            "If you have any suggestions how to improve this app, please write to:\n coriz_team@internet.ru",),
       };
 }

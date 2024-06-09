@@ -103,7 +103,7 @@ class _DeletingDialog extends StatelessWidget {
             model.delete(quiz.id);
           },
           child: Text(S.of(context).delete),
-        )
+        ),
       ],
     );
   }

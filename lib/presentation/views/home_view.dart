@@ -58,7 +58,7 @@ class _HomeViewState extends State<HomeView> {
           BottomNavigationBarItem(
             icon: const Icon(Icons.settings),
             label: S.of(context).settings,
-          )
+          ),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: AppColors.primary,

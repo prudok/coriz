@@ -23,11 +23,11 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "OpenSource": MessageLookupByLibrary.simpleMessage(
-            "Это проект с открытым исходным кодом, любой вид помощи будет оценен."),
+            "Это проект с открытым исходным кодом, любой вид помощи будет оценен.",),
         "aboutApp": MessageLookupByLibrary.simpleMessage("О приложении"),
         "aboutProject": MessageLookupByLibrary.simpleMessage("О проекте"),
         "addAtLeastOneCard": MessageLookupByLibrary.simpleMessage(
-            "Добавьте хотя бы одну карточку"),
+            "Добавьте хотя бы одну карточку",),
         "areYouSure": MessageLookupByLibrary.simpleMessage("Вы уверены?"),
         "cancel": MessageLookupByLibrary.simpleMessage("Отмена"),
         "coriz": MessageLookupByLibrary.simpleMessage("Coriz"),
@@ -36,7 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "delete": MessageLookupByLibrary.simpleMessage("Удалить"),
         "dictionary": MessageLookupByLibrary.simpleMessage("Словарь"),
         "doUWantDeleteWord": MessageLookupByLibrary.simpleMessage(
-            "Вы хотите удалить это слово?"),
+            "Вы хотите удалить это слово?",),
         "editQuiz": MessageLookupByLibrary.simpleMessage("Изменить карточку"),
         "enterEditedConcept":
             MessageLookupByLibrary.simpleMessage("Введите измененное понятие"),
@@ -48,7 +48,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Введите новое слово"),
         "favorites": MessageLookupByLibrary.simpleMessage("Избранное"),
         "fourthDoubleClickOnCard": MessageLookupByLibrary.simpleMessage(
-            "4. Дважды нажмите на карточку, чтобы увидеть перевод"),
+            "4. Дважды нажмите на карточку, чтобы увидеть перевод",),
         "learned": MessageLookupByLibrary.simpleMessage("Выучено"),
         "newQuiz": MessageLookupByLibrary.simpleMessage("Новая карточка!"),
         "newWord": MessageLookupByLibrary.simpleMessage("Новые"),
@@ -57,21 +57,21 @@ class MessageLookup extends MessageLookupByLibrary {
         "noQuizzesAdded":
             MessageLookupByLibrary.simpleMessage("Не добавлено карточек"),
         "pleaseFillTheForm": MessageLookupByLibrary.simpleMessage(
-            "Пожалуйста, заполните форму."),
+            "Пожалуйста, заполните форму.",),
         "quiz": MessageLookupByLibrary.simpleMessage("Карточка"),
         "settings": MessageLookupByLibrary.simpleMessage("Настройки"),
         "starOrOpenIssueOnGithub": MessageLookupByLibrary.simpleMessage(
-            "Оставьте звездочку или сообщите об ошибке на on Github.com:\n https://github.com/rel1nce/coriz"),
+            "Оставьте звездочку или сообщите об ошибке на on Github.com:\n https://github.com/rel1nce/coriz",),
         "termsOfUse":
             MessageLookupByLibrary.simpleMessage("Правила пользования"),
         "thirdStarYourNewQuizCard":
             MessageLookupByLibrary.simpleMessage("3. Добавьте в избранное"),
         "toAddNewQuizCard": MessageLookupByLibrary.simpleMessage(
-            "Чтобы добавить новую карточку:"),
+            "Чтобы добавить новую карточку:",),
         "translateIntoRussian":
             MessageLookupByLibrary.simpleMessage("Перевести на русский"),
         "wordLearned": MessageLookupByLibrary.simpleMessage("Слово выучено!"),
         "writeYourSuggestions": MessageLookupByLibrary.simpleMessage(
-            "Если у вас есть любые предложения как можно улучшить данное приложение, пожалуйста, напишите нам на почту:\n coriz_team@internet.ru")
+            "Если у вас есть любые предложения как можно улучшить данное приложение, пожалуйста, напишите нам на почту:\n coriz_team@internet.ru",),
       };
 }

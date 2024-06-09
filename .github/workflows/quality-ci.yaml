@@ -11,15 +11,15 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
       - name: Install Flutter
         uses: subosito/flutter-action@v2
         with:
-          channel: stable
+          flutter-version: "3.13.1"
       - name: Install FVM
         run: |
-          pub global activate fvm
-          fvm install
-          fvm use
-          fvm pub get
+          dart pub global activate fvm
+      - name: Install dependencies
+        run: fvm flutter pub get
       - name: Analyze code
         run: fvm analyze

@@ -50,12 +50,12 @@ Coriz allows you to add, change and memorize new words with the help of quiz car
 
    
 ```shell
-   git clone https://github.com/rel1nce/university_io.git
+   git clone https://github.com/prudok/coriz.git
    ```
 3. Navigate to the project folder:
    
 ```shell
-   cd university_io
+   cd coriz
   ``` 
 4. Run the application:
 
